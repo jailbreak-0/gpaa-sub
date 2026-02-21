@@ -112,39 +112,27 @@ const Events: React.FC = () => {
         </div>
       </section>
 
-      {/* Annual Conference Archive */}
+      {/* Conference Archive Teaser */}
       <section className="py-24 bg-background-light px-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-black mb-4">Annual Conference Archive</h2>
-            <p className="text-[#617289] text-xl">Celebrating over 20 years of professional excellence</p>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-            {[
-              { year: '2025', theme: 'Digital Health Transformation' },
-              { year: '2024', theme: 'Universal Health Coverage Now' },
-              { year: '2023', theme: 'PAs Leading Primary Care' },
-              { year: '2022', theme: 'Post-Pandemic Healthcare' },
-              { year: '2021', theme: 'Resilience in Crisis' },
-              { year: '2020', theme: 'Innovation & Technology' },
-              { year: '2019', theme: 'Quality Healthcare for All' },
-              { year: '2018', theme: 'Professional Excellence' },
-              { year: '2017', theme: 'Community Health Impact' },
-              { year: '2016', theme: '50 Years of Service' },
-            ].map((conf, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ scale: 0.9, opacity: 0 }}
-                whileInView={{ scale: 1, opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.05 }}
-                className="bg-white p-6 rounded-2xl border border-[#e5e7eb] hover:border-primary hover:shadow-lg transition-all text-center cursor-pointer group"
-              >
-                <div className="text-4xl font-black text-primary mb-3 group-hover:scale-110 transition-transform">{conf.year}</div>
-                <div className="text-sm font-bold text-[#617289] leading-tight">{conf.theme}</div>
-              </motion.div>
-            ))}
-          </div>
+        <div className="max-w-7xl mx-auto text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <div className="inline-flex items-center justify-center size-20 bg-primary/10 rounded-full mb-6">
+              <span className="material-symbols-outlined text-4xl text-primary">event_available</span>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-black mb-6">Explore Our Conference History</h2>
+            <p className="text-[#617289] text-xl mb-10 max-w-2xl mx-auto">
+              Discover over 20 years of annual conferences that have shaped the PA profession in Ghana
+            </p>
+            <a href="/events/conference-archive">
+              <button className="bg-primary cursor-pointer text-white px-10 py-5 rounded-xl font-black text-lg hover:bg-primary-dark transition-all shadow-lg hover:shadow-xl">
+                View Conference Archive
+              </button>
+            </a>
+          </motion.div>
         </div>
       </section>
 

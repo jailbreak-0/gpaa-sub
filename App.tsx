@@ -8,6 +8,7 @@ import Programs from './pages/Programs';
 import Membership from './pages/Membership';
 import MembershipJoin from './pages/MembershipJoin';
 import Events from './pages/Events';
+import ConferenceArchive from './pages/ConferenceArchive';
 import Advocacy from './pages/Advocacy';
 import NewsResources from './pages/NewsResources';
 import Contact from './pages/Contact';
@@ -35,6 +36,7 @@ const App: React.FC = () => {
             <Route path="/membership/join" element={<MembershipJoin />} />
             <Route path="/programs" element={<Programs />} />
             <Route path="/events" element={<Events />} />
+            <Route path="/events/conference-archive" element={<ConferenceArchive />} />
             <Route path="/advocacy" element={<Advocacy />} />
             <Route path="/get-involved" element={<GetInvolved />} />
             <Route path="/get-involved/volunteer" element={<Volunteer />} />

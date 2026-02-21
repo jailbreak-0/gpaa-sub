@@ -23,7 +23,14 @@ export const NAV_LINKS: NavItem[] = [
     ]
   },
   { label: 'Programs', href: '/programs' },
-  { label: 'Events', href: '/events' },
+  { 
+    label: 'Events', 
+    href: '/events',
+    submenu: [
+      { label: 'All Events', href: '/events' },
+      { label: 'Conference Archive', href: '/events/conference-archive' },
+    ]
+  },
   { label: 'Advocacy', href: '/advocacy' },
   { 
     label: 'Get Involved', 
