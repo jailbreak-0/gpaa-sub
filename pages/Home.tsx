@@ -1,10 +1,38 @@
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { PILLARS, NEWS, PARTNERS } from '../constants';
 
+const HERO_SLIDES = [
+  {
+    title: "Empowering Physician Assistants, Advancing Healthcare for Ghana",
+    description: "The official professional association for Physician Assistants in Ghana. Dedicated to advancing clinical excellence, professional development, and quality healthcare delivery nationwide since 1980.",
+    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBVuTLDhlHybXyBhB5LhYTWIhMrqrELWIPLFC9xjF4kcDu3ewQRaPETCsuy2iEygh9zC41olCEwbQVutbr24ODBX0IGWssYpPe0HOLIkWE9w3SN7HTSNM9qz2wFlrHXfPykDc3mAoNAphXEwvf1_Bp-U2oxLcb134UZv7WyWGeQdcjvbpSlU00IJN126CIbBnaUPfrzk9yfQcjgBeAyxt12OPVidh0iD7mdPyJgRpEfk6Sts28-3QVrfdKlph07dd8RJkAyeJSRZon9",
+    primaryCTA: { text: "Join GPAA Today", link: "/membership/join" },
+    secondaryCTA: { text: "Learn Our Story", link: "/about/history" }
+  },
+  {
+    title: "Leading Primary Healthcare Delivery Across Ghana",
+    description: "With members in all regions, we're at the forefront of providing accessible, quality healthcare to communities nationwide. Join us in making a difference.",
+    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCsEjnzETfysxph7bsFcZWTxIvnlheAo9-96REquKX0D_dxrjo_kW39qBOr8w0aJp6weqWuo9bAs76UK0prb0wwWd6UfFeUgUfQEWx5_960vJ8fOEG_iGAEBfmE1wY_bgo6--geeqNoTUP6b5x1BmohnvS8ROfrl_hX4Z2JU40hXzi1W3dwfDadORY6YNYmtjP99L6A1M7NWyRDjmTL6VJuEuKlEErAiouc51Yr8teJERtC8alZeAiQGdjG9HIVgxNKQvcMsDNrYG8u",
+    primaryCTA: { text: "Our Programs", link: "/programs" },
+    secondaryCTA: { text: "Get Involved", link: "/get-involved" }
+  },
+  {
+    title: "Professional Development & Continuing Education",
+    description: "Stay ahead with our comprehensive training programs, workshops, and certification courses. We invest in your growth to ensure excellence in patient care.",
+    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCxhksdUPXXVk-NzwdM9rCSRElp9hD5tuwxIbb2oaSottS_n8CBn2KFYoOxhNMKmdPA0nLGXweg_lxOxW3fqn9VUylg2bOR3MqHBgAIo9-0qKpXDe-McBLKmUoGTxDDWVUHHeAtKw1tAqKoY3dUQbFIlfK4vqGO6v2qmdpaxZLC_fogOHpFItnF0fmN8aqKpffAS6KTUGwcGek6yN776X8glBgbU6LSuM02Qc3DL5N6qDlixxyHBsj4cK8_OWxUBhbufhrr7IwbACW7",
+    primaryCTA: { text: "View Events", link: "/events" },
+    secondaryCTA: { text: "Resources", link: "/resources" }
+  }
+];
+
 const Home: React.FC = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [direction, setDirection] = useState(0); // 1 for next, -1 for prev
+  const [isHovering, setIsHovering] = useState(false);
+
   const fadeInUp = {
     hidden: { opacity: 0, y: 30 },
     visible: { opacity: 1, y: 0 }
@@ -18,58 +46,180 @@ const Home: React.FC = () => {
     }
   };
 
+  // Preload images
+  useEffect(() => {
+    HERO_SLIDES.forEach(slide => {
+      const img = new Image();
+      img.src = slide.image;
+    });
+  }, []);
+
+  // Auto-advance carousel (pauses on hover)
+  useEffect(() => {
+    if (isHovering) return;
+    
+    const timer = setInterval(() => {
+      setDirection(1);
+      setCurrentSlide((prev) => (prev + 1) % HERO_SLIDES.length);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, [isHovering]);
+
+  const nextSlide = () => {
+    setDirection(1);
+    setCurrentSlide((prev) => (prev + 1) % HERO_SLIDES.length);
+  };
+
+  const prevSlide = () => {
+    setDirection(-1);
+    setCurrentSlide((prev) => (prev - 1 + HERO_SLIDES.length) % HERO_SLIDES.length);
+  };
+
+  const goToSlide = (index: number) => {
+    setDirection(index > currentSlide ? 1 : -1);
+    setCurrentSlide(index);
+  };
+
+  const slideVariants = {
+    enter: (direction: number) => ({
+      x: direction > 0 ? 1000 : -1000,
+      opacity: 0,
+      scale: 0.95
+    }),
+    center: {
+      zIndex: 1,
+      x: 0,
+      opacity: 1,
+      scale: 1
+    },
+    exit: (direction: number) => ({
+      zIndex: 0,
+      x: direction < 0 ? 1000 : -1000,
+      opacity: 0,
+      scale: 0.95
+    })
+  };
+
+  const swipeConfidenceThreshold = 10000;
+  const swipePower = (offset: number, velocity: number) => {
+    return Math.abs(offset) * velocity;
+  };
+
   return (
     <div>
-      {/* Hero Section */}
+      {/* Hero Section Carousel */}
       <section className="relative bg-white">
         <div className="max-w-350 mx-auto p-4 md:p-10">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6 }}
-            className="relative overflow-hidden rounded-3xl bg-linear-to-br from-slate-900 via-primary-dark to-primary min-h-150 flex flex-col justify-end p-8 md:p-20 shadow-2xl"
+          <div 
+            className="relative overflow-hidden rounded-3xl bg-linear-to-br from-slate-900 via-primary-dark to-primary min-h-150 shadow-2xl"
+            onMouseEnter={() => setIsHovering(true)}
+            onMouseLeave={() => setIsHovering(false)}
           >
-            <div 
-              className="absolute inset-0 z-0 bg-cover bg-center opacity-70 mix-blend-overlay scale-105" 
-              style={{ backgroundImage: `url('https://lh3.googleusercontent.com/aida-public/AB6AXuBVuTLDhlHybXyBhB5LhYTWIhMrqrELWIPLFC9xjF4kcDu3ewQRaPETCsuy2iEygh9zC41olCEwbQVutbr24ODBX0IGWssYpPe0HOLIkWE9w3SN7HTSNM9qz2wFlrHXfPykDc3mAoNAphXEwvf1_Bp-U2oxLcb134UZv7WyWGeQdcjvbpSlU00IJN126CIbBnaUPfrzk9yfQcjgBeAyxt12OPVidh0iD7mdPyJgRpEfk6Sts28-3QVrfdKlph07dd8RJkAyeJSRZon9')` }}
-            ></div>
-            <div className="absolute inset-0 z-0 bg-linear-to-t from-black/90 via-black/40 to-transparent"></div>
-            
-            <div className="relative z-10 max-w-4xl">
-              <motion.h1
-                initial={{ opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2, duration: 0.6 }}
-                className="text-white text-5xl md:text-7xl font-black leading-[1.05] tracking-tight mb-8 drop-shadow-lg"
-              >
-                Empowering Physician Assistants, Advancing Healthcare for Ghana
-              </motion.h1>
-              <motion.p
-                initial={{ opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4, duration: 0.6 }}
-                className="text-white/90 text-xl md:text-2xl font-medium mb-10 max-w-2xl leading-relaxed drop-shadow"
-              >
-                The official professional association for Physician Assistants in Ghana. Dedicated to advancing clinical excellence, professional development, and quality healthcare delivery nationwide since 1980.
-              </motion.p>
+            <AnimatePresence initial={false} custom={direction}>
               <motion.div
-                initial={{ opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6, duration: 0.6 }}
-                className="flex flex-wrap gap-5"
+                key={currentSlide}
+                custom={direction}
+                variants={slideVariants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={{
+                  x: { type: "spring", stiffness: 300, damping: 30 },
+                  opacity: { duration: 0.5 },
+                  scale: { duration: 0.5 }
+                }}
+                drag="x"
+                dragConstraints={{ left: 0, right: 0 }}
+                dragElastic={1}
+                onDragEnd={(e, { offset, velocity }) => {
+                  const swipe = swipePower(offset.x, velocity.x);
+
+                  if (swipe < -swipeConfidenceThreshold) {
+                    nextSlide();
+                  } else if (swipe > swipeConfidenceThreshold) {
+                    prevSlide();
+                  }
+                }}
+                className="absolute inset-0 flex flex-col justify-end p-8 md:p-20 cursor-grab active:cursor-grabbing"
               >
-                <Link
-                  to="/membership/join"
-                  className="px-10 py-5 bg-primary text-white rounded-xl font-bold text-lg hover:bg-primary-dark transition-all transform hover:-translate-y-1 shadow-lg shadow-primary/25"
-                >
-                  Join GPAA Today
-                </Link>
-                <Link to="/about#history" className="px-10 py-5 bg-white/10 backdrop-blur-md text-white border border-white/30 rounded-xl font-bold text-lg hover:bg-white/20 transition-all text-center">
-                  Learn Our Story
-                </Link>
+                <div 
+                  className="absolute inset-0 z-0 bg-cover bg-center opacity-70 mix-blend-overlay" 
+                  style={{ backgroundImage: `url('${HERO_SLIDES[currentSlide].image}')` }}
+                ></div>
+                <div className="absolute inset-0 z-0 bg-linear-to-t from-black/90 via-black/40 to-transparent"></div>
+                
+                <div className="relative z-10 max-w-4xl">
+                  <motion.h1
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.3, duration: 0.5, ease: "easeOut" }}
+                    className="text-white text-5xl md:text-7xl font-black leading-[1.05] tracking-tight mb-8 drop-shadow-lg"
+                  >
+                    {HERO_SLIDES[currentSlide].title}
+                  </motion.h1>
+                  <motion.p
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.4, duration: 0.5, ease: "easeOut" }}
+                    className="text-white/90 text-xl md:text-2xl font-medium mb-10 max-w-2xl leading-relaxed drop-shadow"
+                  >
+                    {HERO_SLIDES[currentSlide].description}
+                  </motion.p>
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.5, duration: 0.5, ease: "easeOut" }}
+                    className="flex flex-wrap gap-5"
+                  >
+                    <Link
+                      to={HERO_SLIDES[currentSlide].primaryCTA.link}
+                      className="px-10 py-5 bg-primary text-white rounded-xl font-bold text-lg hover:bg-primary-dark transition-all transform hover:-translate-y-1 shadow-lg shadow-primary/25"
+                    >
+                      {HERO_SLIDES[currentSlide].primaryCTA.text}
+                    </Link>
+                    <Link 
+                      to={HERO_SLIDES[currentSlide].secondaryCTA.link} 
+                      className="px-10 py-5 bg-white/10 backdrop-blur-md text-white border border-white/30 rounded-xl font-bold text-lg hover:bg-white/20 transition-all text-center"
+                    >
+                      {HERO_SLIDES[currentSlide].secondaryCTA.text}
+                    </Link>
+                  </motion.div>
+                </div>
               </motion.div>
+            </AnimatePresence>
+
+            {/* Navigation Arrows */}
+            <button
+              onClick={prevSlide}
+              className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-20 bg-white/10 backdrop-blur-md hover:bg-white/20 text-white p-3 md:p-4 rounded-full transition-all group"
+              aria-label="Previous slide"
+            >
+              <span className="material-symbols-outlined text-3xl md:text-4xl group-hover:scale-110 transition-transform">chevron_left</span>
+            </button>
+            <button
+              onClick={nextSlide}
+              className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-20 bg-white/10 backdrop-blur-md hover:bg-white/20 text-white p-3 md:p-4 rounded-full transition-all group"
+              aria-label="Next slide"
+            >
+              <span className="material-symbols-outlined text-3xl md:text-4xl group-hover:scale-110 transition-transform">chevron_right</span>
+            </button>
+
+            {/* Dots Navigation */}
+            <div className="absolute bottom-8 md:bottom-12 left-1/2 -translate-x-1/2 z-20 flex gap-3">
+              {HERO_SLIDES.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => goToSlide(index)}
+                  className={`h-3 rounded-full transition-all duration-300 ${
+                    index === currentSlide 
+                      ? 'bg-white w-12' 
+                      : 'bg-white/40 w-3 hover:bg-white/60'
+                  }`}
+                  aria-label={`Go to slide ${index + 1}`}
+                />
+              ))}
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 

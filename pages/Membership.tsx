@@ -337,49 +337,6 @@ const Membership: React.FC = () => {
         </div>
       </section>
 
-      {/* Partners & Affiliations */}
-      {/* <section className="py-24 px-6 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-black mb-4">Partners & Affiliations</h2>
-            <div className="w-24 h-2 bg-primary mx-auto rounded-full mb-6"></div>
-            <p className="text-[#617289] text-xl max-w-3xl mx-auto">
-              GPAA collaborates with key stakeholders in healthcare and labour to enhance professional development, improve health service delivery, and advocate for policy reform.
-            </p>
-          </div>
-          
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={stagger}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
-          >
-            {PARTNERS.map((partner, idx) => (
-              <motion.div
-                key={idx}
-                variants={fadeInUp}
-                className="bg-background-light p-6 rounded-2xl border border-[#e5e7eb] hover:bg-white hover:shadow-xl transition-all group"
-              >
-                <div className="h-20 flex items-center justify-center mb-4 bg-white rounded-xl p-3 group-hover:scale-105 transition-transform">
-                  <img
-                    src={partner.logo}
-                    alt={partner.name}
-                    className="max-h-full max-w-full object-contain"
-                  />
-                </div>
-                <h3 className="text-base font-black mb-2 text-center group-hover:text-primary transition-colors">
-                  {partner.name}
-                </h3>
-                <p className="text-[#617289] text-center text-xs leading-relaxed">
-                  {partner.description}
-                </p>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section> */}
-
       {/* CTA */}
       <section className="py-20 px-6 bg-primary">
         <div className="max-w-250 mx-auto text-center">

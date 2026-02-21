@@ -103,7 +103,7 @@ const Events: React.FC = () => {
                   </div>
                 </div>
                 <p className="text-[#617289] leading-relaxed mb-6">{event.description}</p>
-                <button className="w-full cursor-pointer bg-primary text-white py-3 rounded-xl font-bold hover:bg-primary-dark transition-all">
+                <button className="w-full cursor-pointer bg-primary text-white py-3 rounded-xl font-bold hover:text-primary hover:bg-white hover:border-2 hover:border-primary transition-all">
                   {event.type === 'upcoming' ? 'Register Now' : 'View Details'}
                 </button>
               </div>
@@ -155,13 +155,13 @@ const Events: React.FC = () => {
           <p className="text-white/90 text-xl mb-8">
             Subscribe to our newsletter to receive event updates and early registration access
           </p>
-          <div className="flex gap-3 max-w-md mx-auto">
+          <div className="flex gap-3 max-w-lg mx-auto">
             <input
               type="email"
               placeholder="Enter your email"
               className="flex-1 px-6 py-4 rounded-xl text-[#111418] outline-none bg-white placeholder:text-[#617289] transition-all focus:ring-2 focus:ring-primary focus:ring-offset-1"
             />
-            <button className="bg-white cursor-pointer text-primary px-8 py-4 rounded-xl font-black hover:bg-slate-100 transition-all">
+            <button className="bg-white cursor-pointer text-primary px-4 py-4 rounded-xl font-black hover:bg-primary hover:border-2 hover:text-white transition-all">
               Subscribe
             </button>
           </div>

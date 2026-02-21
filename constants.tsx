@@ -287,6 +287,22 @@ export const EVENTS: Event[] = [
     location: 'Accra International Conference Centre',
     description: 'Training for regional executives and aspiring leaders in healthcare administration and association governance.',
     image: 'https://images.unsplash.com/photo-1591115765373-5207764f72e7?w=800',
+    type: 'upcoming'
+  },
+  {
+    title: '2025 Annual General Meeting',
+    date: 'November 20-22, 2025',
+    location: 'Labadi Beach Hotel, Accra',
+    description: 'Successful completion of our 2025 AGM with record attendance, featuring elections, policy reviews, and strategic planning sessions.',
+    image: 'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=800',
+    type: 'past'
+  },
+  {
+    title: 'National CPD Training Series 2025',
+    date: 'September 10-12, 2025',
+    location: 'Multiple regional centers',
+    description: 'Comprehensive continuing professional development workshops conducted across all regions, enhancing clinical skills and evidence-based practice.',
+    image: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800',
     type: 'past'
   }
 ];

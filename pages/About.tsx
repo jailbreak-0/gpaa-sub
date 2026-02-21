@@ -65,13 +65,14 @@ const About: React.FC = () => {
   // Core Values Carousel Animation
   const coreValuesX = useMotionValue(0);
   const coreValuesRef = useRef<HTMLDivElement>(null);
+  const [isScrollingCoreValues, setIsScrollingCoreValues] = useState(true);
   
   // Each core value card is 350px (min-w-87.5) + 24px gap = 374px
   // 9 values × 374px = 3366px total width for one set
   const CORE_VALUES_WIDTH = 3366;
   
   useAnimationFrame((t) => {
-    if (coreValuesRef.current) {
+    if (coreValuesRef.current && isScrollingCoreValues) {
       const xPos = coreValuesX.get();
       const newX = xPos - 0.5;
       // Reset seamlessly when scrolled exactly one full set
@@ -82,17 +83,28 @@ const About: React.FC = () => {
       }
     }
   });
+
+  const scrollCoreValuesLeft = () => {
+    const currentX = coreValuesX.get();
+    coreValuesX.set(currentX + 374); // Scroll one card width to the right
+  };
+
+  const scrollCoreValuesRight = () => {
+    const currentX = coreValuesX.get();
+    coreValuesX.set(currentX - 374); // Scroll one card width to the left
+  };
   
   // Partners Carousel Animation
   const partnersX = useMotionValue(0);
   const partnersRef = useRef<HTMLDivElement>(null);
+  const [isScrollingPartners, setIsScrollingPartners] = useState(true);
   
   // Each partner card is 280px (min-w-70) + 24px gap = 304px
   // 17 partners × 304px = 5168px total width for one set
   const PARTNERS_WIDTH = 5168;
   
   useAnimationFrame((t) => {
-    if (partnersRef.current) {
+    if (partnersRef.current && isScrollingPartners) {
       const xPos = partnersX.get();
       const newX = xPos - 0.4;
       // Reset seamlessly when scrolled exactly one full set
@@ -103,6 +115,16 @@ const About: React.FC = () => {
       }
     }
   });
+
+  const scrollPartnersLeft = () => {
+    const currentX = partnersX.get();
+    partnersX.set(currentX + 304); // Scroll one card width to the right
+  };
+
+  const scrollPartnersRight = () => {
+    const currentX = partnersX.get();
+    partnersX.set(currentX - 304); // Scroll one card width to the left
+  };
 
   return (
     <div className="bg-white">
@@ -200,7 +222,26 @@ const About: React.FC = () => {
             <h2 className="text-4xl md:text-5xl font-black mb-4">Our Core Values</h2>
             <div className="w-24 h-2 bg-primary mx-auto rounded-full"></div>
           </motion.div>
-          <div ref={coreValuesRef} className="relative">
+          <div ref={coreValuesRef} className="relative group">
+            {/* Manual scroll buttons */}
+            <button
+              onClick={scrollCoreValuesLeft}
+              onMouseEnter={() => setIsScrollingCoreValues(false)}
+              onMouseLeave={() => setIsScrollingCoreValues(true)}
+              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white hover:bg-primary text-primary hover:text-white p-3 rounded-full shadow-lg transition-all opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0"
+              aria-label="Scroll left"
+            >
+              <span className="material-symbols-outlined text-3xl">chevron_left</span>
+            </button>
+            <button
+              onClick={scrollCoreValuesRight}
+              onMouseEnter={() => setIsScrollingCoreValues(false)}
+              onMouseLeave={() => setIsScrollingCoreValues(true)}
+              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white hover:bg-primary text-primary hover:text-white p-3 rounded-full shadow-lg transition-all opacity-0 group-hover:opacity-100 translate-x-4 group-hover:translate-x-0"
+              aria-label="Scroll right"
+            >
+              <span className="material-symbols-outlined text-3xl">chevron_right</span>
+            </button>
             <motion.div 
               className="flex gap-6 pb-4"
               style={{ x: coreValuesX }}
@@ -404,7 +445,26 @@ const About: React.FC = () => {
               GPAA collaborates with key stakeholders in healthcare to enhance professional development, improve health service delivery, and advocate for policy reform.
             </p>
           </motion.div>
-          <div ref={partnersRef} className="relative">
+          <div ref={partnersRef} className="relative group">
+            {/* Manual scroll buttons */}
+            <button
+              onClick={scrollPartnersLeft}
+              onMouseEnter={() => setIsScrollingPartners(false)}
+              onMouseLeave={() => setIsScrollingPartners(true)}
+              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white hover:bg-green text-green hover:text-white p-3 rounded-full shadow-lg transition-all opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0"
+              aria-label="Scroll left"
+            >
+              <span className="material-symbols-outlined text-3xl">chevron_left</span>
+            </button>
+            <button
+              onClick={scrollPartnersRight}
+              onMouseEnter={() => setIsScrollingPartners(false)}
+              onMouseLeave={() => setIsScrollingPartners(true)}
+              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white hover:bg-green text-green hover:text-white p-3 rounded-full shadow-lg transition-all opacity-0 group-hover:opacity-100 translate-x-4 group-hover:translate-x-0"
+              aria-label="Scroll right"
+            >
+              <span className="material-symbols-outlined text-3xl">chevron_right</span>
+            </button>
             <motion.div 
               className="flex gap-6 pb-4"
               style={{ x: partnersX }}
