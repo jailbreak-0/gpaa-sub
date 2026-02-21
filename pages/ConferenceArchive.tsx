@@ -107,7 +107,7 @@ const ConferenceArchive: React.FC = () => {
                   </div>
                 </div>
                 <div className="mt-6 pt-6 border-t border-[#e5e7eb]">
-                  <button className="text-primary font-bold text-sm hover:text-primary-dark transition-colors flex items-center gap-2 group-hover:gap-3">
+                  <button className="text-primary cursor-pointer font-bold text-sm hover:text-primary-dark transition-colors flex items-center gap-2 group-hover:gap-3">
                     View Conference Details
                     <span className="material-symbols-outlined text-lg transition-all">arrow_forward</span>
                   </button>
