@@ -24,20 +24,20 @@ const Header: React.FC = () => {
   }, [location]);
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md border-b border-[#f0f2f4] px-4 md:px-10 lg:px-20 py-3 shadow-sm">
+    <header className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md border-b border-[#f0f2f4] px-3 md:px-6 lg:px-10 xl:px-20 py-2 md:py-3 shadow-sm">
       <div className="max-w-350 mx-auto flex items-center justify-between">
-        <div className="flex items-center gap-10">
-          <Link to="/" className="flex items-center gap-3 group">
-            <div className="h-12 transition-transform">
+        <div className="flex items-center gap-4 md:gap-6 lg:gap-10">
+          <Link to="/" className="flex items-center gap-2 md:gap-3 group">
+            <div className="h-10 md:h-12 transition-transform">
               <img src="/images/gpaa_logo.png" alt="GPAA Logo" className="h-full w-auto object-contain" />
             </div>
-            <div>
-              <h3 className="text-[#111418] text-xl font-black leading-tight tracking-tight">GPAA</h3>
-              <p className="text-[12px] text-[#617289] font-bold -mt-0.5">Ghana Physician Assistants Association</p>
+            <div className="hidden sm:block">
+              <h3 className="text-[#111418] text-base md:text-lg lg:text-xl font-black leading-tight tracking-tight">GPAA</h3>
+              <p className="text-[10px] md:text-[12px] text-[#617289] font-bold -mt-0.5">Ghana Physician Assistants Association</p>
             </div>
           </Link>
 
-          <nav className="hidden lg:flex items-center gap-6 px-24">
+          <nav className="hidden lg:flex items-center gap-4 xl:gap-6 2xl:px-24">
             {NAV_LINKS.map((link) => (
               <div
                 key={link.label}
@@ -47,7 +47,7 @@ const Header: React.FC = () => {
               >
                 <Link
                   to={link.href}
-                  className={`text-sm font-semibold transition-colors hover:text-primary flex items-center gap-1 ${
+                  className={`text-xs xl:text-sm font-semibold transition-colors hover:text-primary flex items-center gap-1 ${
                     location.pathname === link.href || location.pathname.startsWith(link.href + '/')
                       ? 'text-primary'
                       : 'text-[#111418]'
@@ -81,22 +81,22 @@ const Header: React.FC = () => {
           </nav>
         </div>
 
-        {/* <div className="flex items-center gap-4">
+        {/* <div className="flex items-center gap-2 md:gap-4">
           <Link
             to="/donate"
-            className="hidden md:flex items-center gap-2 min-w-25 cursor-pointer justify-center rounded-lg h-10 px-5 bg-linear-to-r from-primary to-primary-dark text-white text-sm font-bold shadow-md hover:shadow-lg transition-all active:scale-95"
+            className="hidden md:flex items-center gap-2 min-w-20 lg:min-w-25 cursor-pointer justify-center rounded-lg h-9 lg:h-10 px-3 lg:px-5 bg-linear-to-r from-primary to-primary-dark text-white text-xs lg:text-sm font-bold shadow-md hover:shadow-lg transition-all active:scale-95"
           >
             <span className="material-symbols-outlined text-sm">favorite</span>
-            Donate
+            <span className="hidden lg:inline">Donate</span>
           </Link>
           <Link
             to="/membership/join"
-            className="hidden md:flex min-w-25 cursor-pointer items-center justify-center rounded-lg h-10 px-5 bg-primary text-white text-sm font-bold shadow-md hover:bg-primary-dark transition-all active:scale-95"
+            className="hidden md:flex min-w-20 lg:min-w-25 cursor-pointer items-center justify-center rounded-lg h-9 lg:h-10 px-3 lg:px-5 bg-primary text-white text-xs lg:text-sm font-bold shadow-md hover:bg-primary-dark transition-all active:scale-95"
           >
             Join Now
           </Link>
-          <button className="md:hidden p-2 text-[#111418]" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
-            <span className="material-symbols-outlined">{mobileMenuOpen ? 'close' : 'menu'}</span>
+          <button className="lg:hidden p-2 text-[#111418]" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+            <span className="material-symbols-outlined text-2xl">{mobileMenuOpen ? 'close' : 'menu'}</span>
           </button>
         </div> */}
       </div>

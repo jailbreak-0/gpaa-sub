@@ -109,9 +109,9 @@ const Home: React.FC = () => {
     <div>
       {/* Hero Section Carousel */}
       <section className="relative bg-white">
-        <div className="max-w-350 mx-auto p-4 md:p-10">
+        <div className="max-w-350 mx-auto p-2 md:p-4 lg:p-10">
           <div 
-            className="relative overflow-hidden rounded-3xl bg-linear-to-br from-slate-900 via-primary-dark to-primary min-h-150 shadow-2xl"
+            className="relative overflow-hidden rounded-2xl md:rounded-3xl bg-linear-to-br from-slate-900 via-primary-dark to-primary min-h-120 md:min-h-140 lg:min-h-150 shadow-2xl"
             onMouseEnter={() => setIsHovering(true)}
             onMouseLeave={() => setIsHovering(false)}
           >
@@ -140,7 +140,7 @@ const Home: React.FC = () => {
                     prevSlide();
                   }
                 }}
-                className="absolute inset-0 flex flex-col justify-end p-8 md:p-20 cursor-grab active:cursor-grabbing"
+                className="absolute inset-0 flex flex-col justify-end p-6 md:p-12 lg:p-20 cursor-grab active:cursor-grabbing"
               >
                 <div 
                   className="absolute inset-0 z-0 bg-cover bg-center opacity-70 mix-blend-overlay" 
@@ -153,7 +153,7 @@ const Home: React.FC = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.3, duration: 0.5, ease: "easeOut" }}
-                    className="text-white text-5xl md:text-7xl font-black leading-[1.05] tracking-tight mb-8 drop-shadow-lg"
+                    className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black leading-[1.05] tracking-tight mb-6 md:mb-8 drop-shadow-lg"
                   >
                     {HERO_SLIDES[currentSlide].title}
                   </motion.h1>
@@ -161,7 +161,7 @@ const Home: React.FC = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.4, duration: 0.5, ease: "easeOut" }}
-                    className="text-white/90 text-xl md:text-2xl font-medium mb-10 max-w-2xl leading-relaxed drop-shadow"
+                    className="text-white/90 text-base sm:text-lg md:text-xl lg:text-2xl font-medium mb-6 md:mb-10 max-w-2xl leading-relaxed drop-shadow"
                   >
                     {HERO_SLIDES[currentSlide].description}
                   </motion.p>
@@ -169,17 +169,17 @@ const Home: React.FC = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.5, duration: 0.5, ease: "easeOut" }}
-                    className="flex flex-wrap gap-5"
+                    className="flex flex-wrap gap-3 md:gap-5"
                   >
                     <Link
                       to={HERO_SLIDES[currentSlide].primaryCTA.link}
-                      className="px-10 py-5 bg-primary text-white rounded-xl font-bold text-lg hover:bg-primary-dark transition-all transform hover:-translate-y-1 shadow-lg shadow-primary/25"
+                      className="px-6 py-3 md:px-10 md:py-5 bg-primary text-white rounded-lg md:rounded-xl font-bold text-base md:text-lg hover:bg-primary-dark transition-all transform hover:-translate-y-1 shadow-lg shadow-primary/25"
                     >
                       {HERO_SLIDES[currentSlide].primaryCTA.text}
                     </Link>
                     <Link 
                       to={HERO_SLIDES[currentSlide].secondaryCTA.link} 
-                      className="px-10 py-5 bg-white/10 backdrop-blur-md text-white border border-white/30 rounded-xl font-bold text-lg hover:bg-white/20 transition-all text-center"
+                      className="px-6 py-3 md:px-10 md:py-5 bg-white/10 backdrop-blur-md text-white border border-white/30 rounded-lg md:rounded-xl font-bold text-base md:text-lg hover:bg-white/20 transition-all text-center"
                     >
                       {HERO_SLIDES[currentSlide].secondaryCTA.text}
                     </Link>
@@ -241,7 +241,7 @@ const Home: React.FC = () => {
               />
             </div>
             <div className="absolute -bottom-8 -right-8 bg-primary text-white p-10 rounded-2xl shadow-2xl transform rotate-3 hover:rotate-0 transition-transform hidden md:block border-4 border-white">
-              <p className="text-5xl font-black mb-1">50+</p>
+              <p className="text-3xl md:text-4xl lg:text-5xl font-black mb-1">50+</p>
               <p className="text-sm font-bold uppercase tracking-widest opacity-90">Years of Excellence</p>
             </div>
           </motion.div>
@@ -251,7 +251,7 @@ const Home: React.FC = () => {
               <span className="material-symbols-outlined text-sm">medical_services</span>
               <span className="font-bold tracking-widest uppercase text-xs">About GPAA</span>
             </motion.div>
-            <motion.h2 variants={fadeInUp} className="text-4xl md:text-5xl font-black text-[#111418] leading-tight">
+            <motion.h2 variants={fadeInUp} className="text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-black text-[#111418] leading-tight">
               Advancing the Profession with Integrity and Care
             </motion.h2>
             <motion.p variants={fadeInUp} className="text-[#617289] text-xl leading-relaxed">

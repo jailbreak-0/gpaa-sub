@@ -11,7 +11,7 @@
   --color-background-light: #f6f7f8;
   --color-background-dark: #1a1a1a;
   
-  --font-display: Inter, sans-serif;
+  --font-display: Cairo, sans-serif;
   
   --radius: 0.25rem;
   --radius-lg: 0.5rem;
@@ -20,7 +20,7 @@
 }
 
 body { 
-  font-family: 'Inter', sans-serif; 
+  font-family: 'Cairo', sans-serif; 
 }
 
 .material-symbols-outlined { 
