@@ -140,7 +140,7 @@ const Home: React.FC = () => {
                     prevSlide();
                   }
                 }}
-                className="absolute inset-0 flex flex-col justify-end p-6 md:p-12 lg:p-20 cursor-grab active:cursor-grabbing"
+                className="absolute inset-0 flex flex-col justify-end p-6 pb-16 md:p-12 md:pb-20 lg:p-20 lg:pb-24 cursor-grab active:cursor-grabbing"
               >
                 <div 
                   className="absolute inset-0 z-0 bg-cover bg-center opacity-70 mix-blend-overlay" 
@@ -188,24 +188,24 @@ const Home: React.FC = () => {
               </motion.div>
             </AnimatePresence>
 
-            {/* Navigation Arrows */}
+            {/* Navigation Arrows - Hidden on mobile/tablet */}
             <button
               onClick={prevSlide}
-              className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-20 bg-white/10 backdrop-blur-md hover:bg-white/20 text-white p-3 md:p-4 rounded-full transition-all group"
+              className="hidden lg:flex absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-20 bg-white/10 backdrop-blur-md hover:bg-white/20 text-white p-3 md:p-4 rounded-full transition-all group items-center justify-center"
               aria-label="Previous slide"
             >
               <span className="material-symbols-outlined text-3xl md:text-4xl group-hover:scale-110 transition-transform">chevron_left</span>
             </button>
             <button
               onClick={nextSlide}
-              className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-20 bg-white/10 backdrop-blur-md hover:bg-white/20 text-white p-3 md:p-4 rounded-full transition-all group"
+              className="hidden lg:flex absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-20 bg-white/10 backdrop-blur-md hover:bg-white/20 text-white p-3 md:p-4 rounded-full transition-all group items-center justify-center"
               aria-label="Next slide"
             >
               <span className="material-symbols-outlined text-3xl md:text-4xl group-hover:scale-110 transition-transform">chevron_right</span>
             </button>
 
             {/* Dots Navigation */}
-            <div className="absolute bottom-8 md:bottom-12 left-1/2 -translate-x-1/2 z-20 flex gap-3">
+            <div className="absolute bottom-4 md:bottom-8 lg:bottom-12 left-1/2 -translate-x-1/2 z-20 flex gap-3">
               {HERO_SLIDES.map((_, index) => (
                 <button
                   key={index}
