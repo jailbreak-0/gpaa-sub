@@ -81,7 +81,7 @@ const Header: React.FC = () => {
           </nav>
         </div>
 
-        <div className="flex items-center gap-2 md:gap-4">
+        {/* <div className="flex items-center gap-2 md:gap-4">
           <Link
             to="/donate"
             className="hidden md:flex items-center gap-2 min-w-20 lg:min-w-25 cursor-pointer justify-center rounded-lg h-9 lg:h-10 px-3 lg:px-5 bg-linear-to-r from-primary to-primary-dark text-white text-xs lg:text-sm font-bold shadow-md hover:shadow-lg transition-all active:scale-95"
@@ -98,7 +98,7 @@ const Header: React.FC = () => {
           <button className="lg:hidden p-2 text-[#111418]" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
             <span className="material-symbols-outlined text-2xl">{mobileMenuOpen ? 'close' : 'menu'}</span>
           </button>
-        </div>
+        </div> */}
       </div>
 
       {/* Mobile Menu */}
