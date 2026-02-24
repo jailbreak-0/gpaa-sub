@@ -12,6 +12,8 @@ const MembershipJoin: React.FC = () => {
     gender: '',
     dateOfBirth: '',
     licenseNumber: '',
+    staffId: '',
+    employer: '',
     institution: '',
     region: '',
     district: '',
@@ -165,6 +167,35 @@ const MembershipJoin: React.FC = () => {
                   />
                 </div>
                 <div>
+                  <label className="block font-bold mb-2">Staff ID <span className="text-red-500">*</span></label>
+                  <input
+                    type="text"
+                    name="staffId"
+                    required
+                    value={formData.staffId}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 rounded-xl border-2 border-[#e5e7eb] focus:border-primary outline-none transition-all"
+                    placeholder="Enter your staff ID"
+                  />
+                </div>
+                <div>
+                  <label className="block font-bold mb-2">Employer <span className="text-red-500">*</span></label>
+                  <select
+                    name="employer"
+                    required
+                    value={formData.employer}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 rounded-xl border-2 border-[#e5e7eb] focus:border-primary outline-none transition-all"
+                  >
+                    <option value="">Select employer</option>
+                    <option value="GHS">Ghana Health Service (GHS)</option>
+                    <option value="CHAG">Christian Health Association of Ghana (CHAG)</option>
+                    <option value="PS">Prison Service (PS)</option>
+                    <option value="MS">Military Service (MS)</option>
+                    <option value="PP">Private Practice (PP)</option>
+                  </select>
+                </div>
+                <div>
                   <label className="block font-bold mb-2">Training Institution <span className="text-red-500">*</span></label>
                   <input
                     type="text"
@@ -240,7 +271,7 @@ const MembershipJoin: React.FC = () => {
                   <input
                     type="file"
                     accept=".pdf,.jpg,.jpeg,.png"
-                    className="w-full cursor-pointer"
+                    className="w-full cursor-pointer bg-gray-200 rounded-lg border-2 border-gray-500 p-4 text-center text-sm text-[#617289] hover:bg-gray-300 transition-all "
                   />
                 </div>
                 <div className="bg-background-light p-6 rounded-xl">
@@ -248,7 +279,7 @@ const MembershipJoin: React.FC = () => {
                   <input
                     type="file"
                     accept=".pdf,.jpg,.jpeg,.png"
-                    className="w-full cursor-pointer"
+                    className="w-full cursor-pointer bg-gray-200 rounded-lg border-2 border-gray-500 p-4 text-center text-sm text-[#617289] hover:bg-gray-300 transition-all "
                   />
                 </div>
                 <div className="bg-background-light p-6 rounded-xl">
@@ -256,7 +287,7 @@ const MembershipJoin: React.FC = () => {
                   <input
                     type="file"
                     accept=".jpg,.jpeg,.png"
-                    className="w-full cursor-pointer"
+                    className="w-full cursor-pointer bg-gray-200 rounded-lg border-2 border-gray-500 p-4 text-center text-sm text-[#617289] hover:bg-gray-300 transition-all "
                   />
                 </div>
               </div>
