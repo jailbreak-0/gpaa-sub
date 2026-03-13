@@ -1,18 +1,32 @@
 @import "tailwindcss";
 
 @theme {
+  /* GPAA Primary Colors (Union Red) */
   --color-primary: #C62828;
   --color-primary-dark: #B71C1C;
   --color-primary-light: #EF5350;
+  
+  /* Ghana Flag Colors */
+  --color-ghana-red: #CE1126;
+  --color-ghana-gold: #FCD116;
+  --color-ghana-green: #006B3F;
+  
+  /* Supporting Colors */
   --color-accent: #FFA726;
   --color-green: #2E7D32;
   --color-green-dark: #1B5E20;
   --color-green-light: #66BB6A;
+  --color-gold: #FFD700;
+  --color-gold-dark: #FFA500;
+  
+  /* Backgrounds */
   --color-background-light: #f6f7f8;
   --color-background-dark: #1a1a1a;
   
+  /* Typography */
   --font-display: Cairo, sans-serif;
   
+  /* Border Radius */
   --radius: 0.25rem;
   --radius-lg: 0.5rem;
   --radius-xl: 0.75rem;

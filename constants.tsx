@@ -1,5 +1,5 @@
 
-import { NavItem, NewsItem, PillarItem, Executive, HistoryEvent, MembershipCategory, Event, Program, Partner } from './types';
+import { NavItem, NewsItem, PillarItem, Executive, HistoryEvent, MembershipCategory, Event, Program, Partner, RegionalExecutive, TrustSignal, WelfarePaymentMethod, Document } from './types';
 
 export const NAV_LINKS: NavItem[] = [
   { label: 'Home', href: '/' },
@@ -9,7 +9,8 @@ export const NAV_LINKS: NavItem[] = [
     submenu: [
       { label: 'Mission & Vision', href: '/about#mission' },
       { label: 'History', href: '/about#history' },
-      { label: 'Leadership', href: '/about#leadership' },
+      { label: 'National Leadership', href: '/about#leadership' },
+      { label: 'Regional Executives', href: '/about#regional' },
       { label: 'Partners', href: '/about#partners' },
     ]
   },
@@ -17,21 +18,32 @@ export const NAV_LINKS: NavItem[] = [
     label: 'Membership', 
     href: '/membership',
     submenu: [
-      { label: 'Join Us', href: '/membership/join' },
       { label: 'Benefits', href: '/membership#benefits' },
       { label: 'Categories', href: '/membership#categories' },
+      { label: 'Member Login', href: '/login' },
+      { label: 'Members Directory', href: '/members-directory' },
     ]
   },
-  { label: 'Programs', href: '/programs' },
   { 
     label: 'Events', 
     href: '/events',
     submenu: [
       { label: 'All Events', href: '/events' },
+      { label: 'Programs', href: '/programs' },
       { label: 'Conference Archive', href: '/events/conference-archive' },
     ]
   },
-  { label: 'Advocacy', href: '/advocacy' },
+  { label: 'News', href: '/news' },
+  { 
+    label: 'Resources', 
+    href: '/resources',
+    submenu: [
+      { label: 'All Resources', href: '/resources' },
+      { label: 'Documents & Reports', href: '/documents' },
+      { label: 'Forms & Policies', href: '/documents#forms' },
+      { label: 'Welfare', href: '/welfare' },
+    ]
+  },
   { 
     label: 'Get Involved', 
     href: '/get-involved',
@@ -39,10 +51,10 @@ export const NAV_LINKS: NavItem[] = [
       { label: 'Volunteer', href: '/get-involved/volunteer' },
       { label: 'Internship / Careers', href: '/get-involved/careers' },
       { label: 'Partnerships', href: '/get-involved/partnerships' },
-      { label: 'Sponsorship', href: '/donate' },
+      { label: 'Advocacy', href: '/advocacy' },
+      { label: 'Donate', href: '/donate' },
     ]
   },
-  { label: 'News & Resources', href: '/news-resources' },
   { label: 'Contact', href: '/contact' },
 ];
 
@@ -165,21 +177,8 @@ export const HISTORY: HistoryEvent[] = [
 
 export const MEMBERSHIP_CATEGORIES: MembershipCategory[] = [
   {
-    title: 'Student Member',
-    description: 'For PA students currently enrolled in accredited training institutions',
-    fees: 'GH₵ 50/year',
-    benefits: [
-      'Access to student mentorship program',
-      'Discounted conference registration',
-      'Job placement assistance',
-      'Study materials and resources',
-      'Networking events'
-    ],
-    icon: 'school'
-  },
-  {
     title: 'Professional Member',
-    description: 'For licensed and practicing Physician Assistants in Ghana',
+    description: 'For licensed Physician Assistants working in public/government health facilities',
     fees: 'GH₵ 200/year',
     benefits: [
       'CPD credits and training programs',
@@ -187,34 +186,51 @@ export const MEMBERSHIP_CATEGORIES: MembershipCategory[] = [
       'Advocacy representation',
       'Access to job opportunities',
       'Annual conference access',
-      'Professional indemnity insurance support'
+      'Professional indemnity insurance support',
+      'Welfare benefits'
     ],
     icon: 'badge'
   },
   {
-    title: 'Overseas Member',
-    description: 'For Ghanaian PAs practicing internationally',
-    fees: '$100/year',
+    title: 'Private Member',
+    description: 'For licensed Physician Assistants in private practice or privately employed',
+    fees: 'GH₵ 250/year',
     benefits: [
-      'Stay connected with Ghana PA community',
-      'Virtual CPD programs',
-      'Networking opportunities',
-      'Annual conference virtual access',
-      'International collaboration programs'
+      'CPD credits and training programs',
+      'Legal and professional support',
+      'Access to job opportunities',
+      'Annual conference access',
+      'Professional indemnity insurance support',
+      'Networking opportunities'
     ],
-    icon: 'public'
+    icon: 'business_center'
   },
   {
-    title: 'Honorary Member',
-    description: 'For distinguished individuals who have contributed significantly to the profession',
-    fees: 'By invitation only',
+    title: 'Junior Physician Assistant',
+    description: 'For newly graduated PAs within their first 3 years of practice',
+    fees: 'GH₵ 100/year',
     benefits: [
-      'Lifetime membership',
-      'Recognition at national events',
-      'Advisory board participation',
-      'All professional member benefits'
+      'Mentorship program access',
+      'Discounted CPD programs',
+      'Career development support',
+      'Job placement assistance',
+      'Reduced conference fees',
+      'Networking events'
     ],
-    icon: 'military_tech'
+    icon: 'school'
+  },
+  {
+    title: 'Retired',
+    description: 'For retired Physician Assistants who wish to remain connected',
+    fees: 'GH₵ 50/year',
+    benefits: [
+      'Stay connected with PA community',
+      'Honorary member privileges',
+      'Newsletter and updates',
+      'Conference attendance (discounted)',
+      'Advisory roles opportunities'
+    ],
+    icon: 'elderly'
   }
 ];
 
@@ -399,5 +415,166 @@ export const PARTNERS: Partner[] = [
     name: 'Organised Labour',
     logo: 'https://via.placeholder.com/200x100/C62828/white?text=OL',
     description: 'Broader labour movement collaboration'
+  }
+];
+
+export const REGIONAL_EXECUTIVES: RegionalExecutive[] = [
+  { name: 'Kwame Asante', role: 'Chairman', region: 'Greater Accra', email: 'accra.chair@gpaa.org.gh', phone: '+233 24 XXX XXXX' },
+  { name: 'Afia Mensah', role: 'Secretary', region: 'Greater Accra', email: 'accra.sec@gpaa.org.gh', phone: '+233 24 XXX XXXX' },
+  { name: 'Kofi Mensah', role: 'Chairman', region: 'Ashanti', email: 'ashanti.chair@gpaa.org.gh', phone: '+233 24 XXX XXXX' },
+  { name: 'Abena Osei', role: 'Secretary', region: 'Ashanti', email: 'ashanti.sec@gpaa.org.gh', phone: '+233 24 XXX XXXX' },
+  { name: 'Mohammed Abdul', role: 'Chairman', region: 'Northern', email: 'northern.chair@gpaa.org.gh', phone: '+233 24 XXX XXXX' },
+  { name: 'Fatima Ibrahim', role: 'Secretary', region: 'Northern', email: 'northern.sec@gpaa.org.gh', phone: '+233 24 XXX XXXX' },
+  { name: 'Emmanuel Tetteh', role: 'Chairman', region: 'Eastern', email: 'eastern.chair@gpaa.org.gh', phone: '+233 24 XXX XXXX' },
+  { name: 'Grace Adu', role: 'Secretary', region: 'Eastern', email: 'eastern.sec@gpaa.org.gh', phone: '+233 24 XXX XXXX' },
+  { name: 'Kwesi Yankson', role: 'Chairman', region: 'Central', email: 'central.chair@gpaa.org.gh', phone: '+233 24 XXX XXXX' },
+  { name: 'Ama Serwaa', role: 'Secretary', region: 'Central', email: 'central.sec@gpaa.org.gh', phone: '+233 24 XXX XXXX' },
+  { name: 'Samuel Owusu', role: 'Chairman', region: 'Western', email: 'western.chair@gpaa.org.gh', phone: '+233 24 XXX XXXX' },
+  { name: 'Akua Boakye', role: 'Secretary', region: 'Western', email: 'western.sec@gpaa.org.gh', phone: '+233 24 XXX XXXX' },
+  { name: 'Joseph Agyei', role: 'Chairman', region: 'Volta', email: 'volta.chair@gpaa.org.gh', phone: '+233 24 XXX XXXX' },
+  { name: 'Elikem Torgbor', role: 'Secretary', region: 'Volta', email: 'volta.sec@gpaa.org.gh', phone: '+233 24 XXX XXXX' },
+  { name: 'Richard Amoah', role: 'Chairman', region: 'Western North', email: 'westernnorth.chair@gpaa.org.gh', phone: '+233 24 XXX XXXX' },
+  { name: 'Mary Addo', role: 'Secretary', region: 'Western North', email: 'westernnorth.sec@gpaa.org.gh', phone: '+233 24 XXX XXXX' },
+  { name: 'Ibrahim Mahama', role: 'Chairman', region: 'Upper East', email: 'uppereast.chair@gpaa.org.gh', phone: '+233 24 XXX XXXX' },
+  { name: 'Ayisha Alhassan', role: 'Secretary', region: 'Upper East', email: 'uppereast.sec@gpaa.org.gh', phone: '+233 24 XXX XXXX' },
+  { name: 'Sulemana Iddrisu', role: 'Chairman', region: 'Upper West', email: 'upperwest.chair@gpaa.org.gh', phone: '+233 24 XXX XXXX' },
+  { name: 'Hawa Seidu', role: 'Secretary', region: 'Upper West', email: 'upperwest.sec@gpaa.org.gh', phone: '+233 24 XXX XXXX' },
+  { name: 'David Kpogli', role: 'Chairman', region: 'Oti', email: 'oti.chair@gpaa.org.gh', phone: '+233 24 XXX XXXX' },
+  { name: 'Juliana Dzramado', role: 'Secretary', region: 'Oti', email: 'oti.sec@gpaa.org.gh', phone: '+233 24 XXX XXXX' },
+  { name: 'Patrick Ansah', role: 'Chairman', region: 'Bono', email: 'bono.chair@gpaa.org.gh', phone: '+233 24 XXX XXXX' },
+  { name: 'Charity Boateng', role: 'Secretary', region: 'Bono', email: 'bono.sec@gpaa.org.gh', phone: '+233 24 XXX XXXX' },
+  { name: 'Michael Acheampong', role: 'Chairman', region: 'Bono East', email: 'bonoeast.chair@gpaa.org.gh', phone: '+233 24 XXX XXXX' },
+  { name: 'Rebecca Frimpong', role: 'Secretary', region: 'Bono East', email: 'bonoeast.sec@gpaa.org.gh', phone: '+233 24 XXX XXXX' },
+  { name: 'Eric Agbeko', role: 'Chairman', region: 'Ahafo', email: 'ahafo.chair@gpaa.org.gh', phone: '+233 24 XXX XXXX' },
+  { name: 'Patience Asante', role: 'Secretary', region: 'Ahafo', email: 'ahafo.sec@gpaa.org.gh', phone: '+233 24 XXX XXXX' },
+  { name: 'Francis Quaye', role: 'Chairman', region: 'North East', email: 'northeast.chair@gpaa.org.gh', phone: '+233 24 XXX XXXX' },
+  { name: 'Amina Issahaku', role: 'Secretary', region: 'North East', email: 'northeast.sec@gpaa.org.gh', phone: '+233 24 XXX XXXX' },
+  { name: 'Isaac Amponsah', role: 'Chairman', region: 'Savannah', email: 'savannah.chair@gpaa.org.gh', phone: '+233 24 XXX XXXX' },
+  { name: 'Salima Musah', role: 'Secretary', region: 'Savannah', email: 'savannah.sec@gpaa.org.gh', phone: '+233 24 XXX XXXX' },
+];
+
+export const GHANA_REGIONS = [
+  'Greater Accra', 'Ashanti', 'Northern', 'Eastern', 'Central', 'Western', 
+  'Volta', 'Western North', 'Upper East', 'Upper West', 'Oti', 'Bono', 
+  'Bono East', 'Ahafo', 'North East', 'Savannah'
+];
+
+export const EMPLOYER_CATEGORIES = [
+  'Ghana Health Service',
+  'Teaching Hospital',
+  'Regional Hospital',
+  'District Hospital', 
+  'CHAG (Christian Health Association of Ghana)',
+  'Ahmadiyya Mission',
+  'Police Hospital',
+  'Military Hospital',
+  'Prison Service Hospital',
+  'Private Hospital',
+  'Private Clinic',
+  'NGO Health Facility',
+  'Self-Employed',
+  'Other'
+];
+
+export const TRUST_SIGNALS: TrustSignal[] = [
+  { icon: 'groups', stat: '6,000+', label: 'Active Members Nationwide' },
+  { icon: 'event_available', stat: '40+', label: 'Years Serving Ghana' },
+  { icon: 'location_city', stat: '16', label: 'Regional Branches' },
+  { icon: 'verified', stat: '100%', label: 'MDC Accredited' },
+  { icon: 'health_and_safety', stat: '500+', label: 'Annual CPD Programs' },
+  { icon: 'volunteer_activism', stat: '10,000+', label: 'Lives Impacted Yearly' }
+];
+
+export const WELFARE_PAYMENT_METHODS: WelfarePaymentMethod[] = [
+  {
+    type: 'Mobile Money',
+    name: 'MTN Mobile Money',
+    number: '0XX XXX XXXX',
+    details: 'GPAA Welfare Account'
+  },
+  {
+    type: 'Mobile Money',
+    name: 'Vodafone Cash',
+    number: '0XX XXX XXXX',
+    details: 'GPAA Welfare Account'
+  },
+  {
+    type: 'Bank',
+    name: 'GCB Bank',
+    number: '1234567890',
+    details: 'Account Name: GPAA Welfare Fund | Branch: Accra Main'
+  },
+  {
+    type: 'Shortcode',
+    name: 'Bank Network Shortcode',
+    number: '*713*XXXX#',
+    details: 'Quick payment via USSD'
+  }
+];
+
+export const SAMPLE_DOCUMENTS: Document[] = [
+  {
+    title: '2025 Annual Financial Statement',
+    description: 'Comprehensive financial report for the fiscal year 2025',
+    category: 'Financial',
+    fileUrl: '#',
+    date: '2026-01-15',
+    size: '2.4 MB'
+  },
+  {
+    title: '2026 Calendar of Activities',
+    description: 'Full schedule of events, meetings, and programs for 2026',
+    category: 'Calendar',
+    fileUrl: '#',
+    date: '2026-01-01',
+    size: '856 KB'
+  },
+  {
+    title: '2025 Welfare Account Report',
+    description: 'Detailed welfare fund utilization and member benefits report',
+    category: 'Financial',
+    fileUrl: '#',
+    date: '2025-12-31',
+    size: '1.8 MB'
+  },
+  {
+    title: 'GPAA Constitution (Amended 2024)',
+    description: 'Official association constitution with recent amendments',
+    category: 'Policies',
+    fileUrl: '#',
+    date: '2024-11-20',
+    size: '542 KB'
+  },
+  {
+    title: 'Membership Registration Form',
+    description: 'Official form for new member registration and renewal',
+    category: 'Forms',
+    fileUrl: '#',
+    date: '2026-01-01',
+    size: '124 KB'
+  },
+  {
+    title: 'CPD Certificate Request Form',
+    description: 'Application form for CPD credit certificate issuance',
+    category: 'Forms',
+    fileUrl: '#',
+    date: '2026-01-01',
+    size: '98 KB'
+  },
+  {
+    title: '2025 External Auditors Report',
+    description: 'Independent audit report on GPAA financial accounts',
+    category: 'Reports',
+    fileUrl: '#',
+    date: '2025-12-15',
+    size: '3.2 MB'
+  },
+  {
+    title: 'Professional Indemnity Policy Guidelines',
+    description: 'Guide to professional indemnity insurance for members',
+    category: 'Policies',
+    fileUrl: '#',
+    date: '2025-10-01',
+    size: '678 KB'
   }
 ];

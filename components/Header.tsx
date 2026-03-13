@@ -26,7 +26,7 @@ const Header: React.FC = () => {
   return (
     <header className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md border-b border-[#f0f2f4] px-3 md:px-6 lg:px-10 xl:px-20 py-2 md:py-3 shadow-sm">
       <div className="max-w-350 mx-auto flex items-center justify-between">
-        <div className="flex items-center gap-4 md:gap-6 lg:gap-10">
+        <div className="flex items-center">
           <Link to="/" className="flex items-center gap-2 md:gap-3 group">
             <div className="h-10 md:h-12 transition-transform">
               <img src="/images/gpaa_logo.png" alt="GPAA Logo" className="h-full w-auto object-contain" />
@@ -36,8 +36,12 @@ const Header: React.FC = () => {
               <p className="text-[10px] md:text-[12px] text-[#617289] font-bold -mt-0.5">Ghana Physician Assistants Association</p>
             </div>
           </Link>
+        </div>
 
-          <nav className="hidden lg:flex items-center gap-4 xl:gap-6 2xl:px-24">
+        {/* Auth Buttons */}
+        <div className="flex items-center gap-2 md:gap-3 lg:gap-6">
+          {/* Desktop Navigation */}
+          <nav className="hidden lg:flex items-center gap-4 xl:gap-6 animate-in fade-in slide-in-from-left duration-300">
             {NAV_LINKS.map((link) => (
               <div
                 key={link.label}
@@ -79,26 +83,24 @@ const Header: React.FC = () => {
               </div>
             ))}
           </nav>
-        </div>
 
-        {/* <div className="flex items-center gap-2 md:gap-4">
           <Link
-            to="/donate"
-            className="hidden md:flex items-center gap-2 min-w-20 lg:min-w-25 cursor-pointer justify-center rounded-lg h-9 lg:h-10 px-3 lg:px-5 bg-linear-to-r from-primary to-primary-dark text-white text-xs lg:text-sm font-bold shadow-md hover:shadow-lg transition-all active:scale-95"
+            to="/login"
+            className="hidden md:flex items-center gap-2 cursor-pointer justify-center rounded-xl h-9 lg:h-10 px-4 lg:px-6 border-2 border-primary text-primary text-xs lg:text-sm font-bold hover:bg-primary/5 transition-all"
           >
-            <span className="material-symbols-outlined text-sm">favorite</span>
-            <span className="hidden lg:inline">Donate</span>
+            <span className="material-symbols-outlined text-lg">login</span>
+            <span>Log In</span>
           </Link>
-          <Link
-            to="/membership/join"
-            className="hidden md:flex min-w-20 lg:min-w-25 cursor-pointer items-center justify-center rounded-lg h-9 lg:h-10 px-3 lg:px-5 bg-primary text-white text-xs lg:text-sm font-bold shadow-md hover:bg-primary-dark transition-all active:scale-95"
+          
+          {/* Mobile Menu Toggle */}
+          <button 
+            className="lg:hidden p-2 text-[#111418]" 
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle menu"
           >
-            Join Now
-          </Link>
-          <button className="lg:hidden p-2 text-[#111418]" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
             <span className="material-symbols-outlined text-2xl">{mobileMenuOpen ? 'close' : 'menu'}</span>
           </button>
-        </div> */}
+        </div>
       </div>
 
       {/* Mobile Menu */}
@@ -135,18 +137,12 @@ const Header: React.FC = () => {
           ))}
           <div className="pt-4 border-t border-[#e5e7eb] mt-4 space-y-3">
             <Link
-              to="/membership/join"
+              to="/login"
               onClick={() => setMobileMenuOpen(false)}
-              className="block w-full bg-primary text-white font-bold py-3 rounded-lg text-center"
+              className="flex items-center justify-center gap-2 w-full bg-white border-2 border-primary text-primary font-bold py-3 rounded-xl"
             >
-              Join GPAA
-            </Link>
-            <Link
-              to="/donate"
-              onClick={() => setMobileMenuOpen(false)}
-              className="block w-full bg-linear-to-r from-primary to-primary-dark text-white font-bold py-3 rounded-lg text-center"
-            >
-              💝 Donate Now
+              <span className="material-symbols-outlined">login</span>
+              Log In
             </Link>
           </div>
         </div>

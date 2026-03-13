@@ -2,29 +2,29 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { PILLARS, NEWS, PARTNERS } from '../constants';
+import { PILLARS, NEWS, PARTNERS, TRUST_SIGNALS } from '../constants';
 
 const HERO_SLIDES = [
   {
-    title: "Empowering Physician Assistants, Advancing Healthcare for Ghana",
-    description: "The official professional association for Physician Assistants in Ghana. Dedicated to advancing clinical excellence, professional development, and quality healthcare delivery nationwide since 1980.",
+    title: "Who Are Physician Assistants?",
+    description: "Trained healthcare professionals providing comprehensive primary healthcare services across Ghana. We diagnose, treat, and prevent diseases in hospitals, clinics, and community health centers—bridging the gap between doctors and nurses to deliver quality care to all Ghanaians.",
     image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBVuTLDhlHybXyBhB5LhYTWIhMrqrELWIPLFC9xjF4kcDu3ewQRaPETCsuy2iEygh9zC41olCEwbQVutbr24ODBX0IGWssYpPe0HOLIkWE9w3SN7HTSNM9qz2wFlrHXfPykDc3mAoNAphXEwvf1_Bp-U2oxLcb134UZv7WyWGeQdcjvbpSlU00IJN126CIbBnaUPfrzk9yfQcjgBeAyxt12OPVidh0iD7mdPyJgRpEfk6Sts28-3QVrfdKlph07dd8RJkAyeJSRZon9",
     primaryCTA: { text: "Join GPAA Today", link: "/membership/join" },
-    secondaryCTA: { text: "Learn Our Story", link: "/about/history" }
+    secondaryCTA: { text: "Learn More About PAs", link: "/about" }
   },
   {
-    title: "Leading Primary Healthcare Delivery Across Ghana",
-    description: "With members in all regions, we're at the forefront of providing accessible, quality healthcare to communities nationwide. Join us in making a difference.",
+    title: "Empowering Physician Assistants, Advancing Healthcare for Ghana",
+    description: "The official professional association for Physician Assistants in Ghana. Dedicated to advancing clinical excellence, professional development, and quality healthcare delivery nationwide since 1980.",
     image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCsEjnzETfysxph7bsFcZWTxIvnlheAo9-96REquKX0D_dxrjo_kW39qBOr8w0aJp6weqWuo9bAs76UK0prb0wwWd6UfFeUgUfQEWx5_960vJ8fOEG_iGAEBfmE1wY_bgo6--geeqNoTUP6b5x1BmohnvS8ROfrl_hX4Z2JU40hXzi1W3dwfDadORY6YNYmtjP99L6A1M7NWyRDjmTL6VJuEuKlEErAiouc51Yr8teJERtC8alZeAiQGdjG9HIVgxNKQvcMsDNrYG8u",
-    primaryCTA: { text: "Our Programs", link: "/programs" },
-    secondaryCTA: { text: "Get Involved", link: "/get-involved" }
+    primaryCTA: { text: "Become a Member", link: "/membership/join" },
+    secondaryCTA: { text: "Member Login", link: "/membership#login" }
   },
   {
-    title: "Professional Development & Continuing Education",
-    description: "Stay ahead with our comprehensive training programs, workshops, and certification courses. We invest in your growth to ensure excellence in patient care.",
+    title: "Why Are PAs Important?",
+    description: "Serving as the backbone of Ghana's primary healthcare system, Physician Assistants deliver essential medical services in underserved areas, reduce patient wait times, and extend healthcare access to every corner of our nation. We are passionate advocates for community health and wellness.",
     image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCxhksdUPXXVk-NzwdM9rCSRElp9hD5tuwxIbb2oaSottS_n8CBn2KFYoOxhNMKmdPA0nLGXweg_lxOxW3fqn9VUylg2bOR3MqHBgAIo9-0qKpXDe-McBLKmUoGTxDDWVUHHeAtKw1tAqKoY3dUQbFIlfK4vqGO6v2qmdpaxZLC_fogOHpFItnF0fmN8aqKpffAS6KTUGwcGek6yN776X8glBgbU6LSuM02Qc3DL5N6qDlixxyHBsj4cK8_OWxUBhbufhrr7IwbACW7",
-    primaryCTA: { text: "View Events", link: "/events" },
-    secondaryCTA: { text: "Resources", link: "/resources" }
+    primaryCTA: { text: "View Upcoming Events", link: "/events" },
+    secondaryCTA: { text: "Contact Us", link: "/contact" }
   }
 ];
 
@@ -296,6 +296,31 @@ const Home: React.FC = () => {
                 </div>
                 <h3 className="text-2xl font-bold mb-4 text-[#111418]">{pillar.title}</h3>
                 <p className="text-[#617289] text-lg leading-relaxed">{pillar.description}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </motion.section>
+
+      {/* Trust Signals Section */}
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        variants={stagger}
+        className="py-16 bg-white px-6 border-y-2 border-ghana-gold"
+      >
+        <div className="max-w-7xl mx-auto">
+          <motion.div variants={stagger} className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
+            {TRUST_SIGNALS.map((signal, idx) => (
+              <motion.div key={idx} variants={fadeInUp} className="text-center">
+                <div className="mb-4 flex justify-center">
+                  <div className="size-16 rounded-full bg-ghana-green/10 flex items-center justify-center text-ghana-green">
+                    <span className="material-symbols-outlined text-3xl">{signal.icon}</span>
+                  </div>
+                </div>
+                <div className="text-3xl md:text-4xl font-black text-primary mb-2">{signal.stat}</div>
+                <div className="text-sm font-bold text-[#617289] uppercase tracking-wide">{signal.label}</div>
               </motion.div>
             ))}
           </motion.div>

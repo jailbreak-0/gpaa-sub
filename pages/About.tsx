@@ -1,7 +1,7 @@
 
 import React, { useState, useRef } from 'react';
 import { motion, useMotionValue, useAnimationFrame } from 'framer-motion';
-import { EXECUTIVES, PARTNERS } from '../constants';
+import { EXECUTIVES, PARTNERS, REGIONAL_EXECUTIVES, GHANA_REGIONS } from '../constants';
 
 const LeadershipCard: React.FC<{ leader: typeof EXECUTIVES[0], idx: number }> = ({ leader, idx }) => {
   const [isExpanded, setIsExpanded] = useState(idx === 0);
@@ -364,13 +364,75 @@ const About: React.FC = () => {
       >
         <div className="max-w-7xl mx-auto">
           <motion.div variants={fadeInUp} className="text-center mb-12 md:mb-16 lg:mb-20">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black mb-4 md:mb-6">Leadership</h2>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black mb-4 md:mb-6">National Leadership</h2>
             <p className="text-[#617289] text-sm sm:text-base md:text-lg lg:text-xl">The dedicated leaders steering our association forward with vision and integrity.</p>
           </motion.div>
           <motion.div variants={stagger} className="space-y-4 md:space-y-6">
             {EXECUTIVES.map((leader, idx) => (
               <LeadershipCard key={leader.name} leader={leader} idx={idx} />
             ))}
+          </motion.div>
+        </div>
+      </motion.section>
+
+      {/* Regional Executives */}
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        variants={stagger}
+        className="py-12 md:py-20 lg:py-24 bg-white px-4 md:px-6"
+      >
+        <div className="max-w-7xl mx-auto">
+          <motion.div variants={fadeInUp} className="text-center mb-12 md:mb-16">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black mb-4 md:mb-6">Regional Executives</h2>
+            <p className="text-[#617289] text-sm sm:text-base md:text-lg lg:text-xl">
+              Our regional leaders ensuring representation and support across all 16 regions of Ghana.
+            </p>
+          </motion.div>
+          <motion.div variants={stagger} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {GHANA_REGIONS.map((region) => {
+              const regionExecs = REGIONAL_EXECUTIVES.filter(exec => exec.region === region);
+              const chairman = regionExecs.find(exec => exec.role === 'Chairman');
+              const secretary = regionExecs.find(exec => exec.role === 'Secretary');
+              
+              return (
+                <motion.div 
+                  key={region} 
+                  variants={fadeInUp}
+                  className="bg-background-light rounded-2xl p-6 border-2 border-[#e5e7eb] hover:border-ghana-green transition-all hover:shadow-lg"
+                >
+                  <div className="flex items-center gap-3 mb-4 pb-4 border-b-2 border-ghana-gold/30">
+                    <span className="material-symbols-outlined text-ghana-green text-3xl">location_on</span>
+                    <h3 className="text-xl font-black text-[#111418]">{region} Region</h3>
+                  </div>
+                  <div className="space-y-4">
+                    {chairman && (
+                      <div>
+                        <div className="text-xs font-bold text-primary uppercase tracking-wide mb-1">Chairman</div>
+                        <div className="font-bold text-[#111418]">{chairman.name}</div>
+                        {chairman.email && (
+                          <a href={`mailto:${chairman.email}`} className="text-sm text-[#617289] hover:text-primary transition-colors">
+                            {chairman.email}
+                          </a>
+                        )}
+                      </div>
+                    )}
+                    {secretary && (
+                      <div>
+                        <div className="text-xs font-bold text-ghana-green uppercase tracking-wide mb-1">Secretary</div>
+                        <div className="font-bold text-[#111418]">{secretary.name}</div>
+                        {secretary.email && (
+                          <a href={`mailto:${secretary.email}`} className="text-sm text-[#617289] hover:text-ghana-green transition-colors">
+                            {secretary.email}
+                          </a>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                </motion.div>
+              );
+            })}
           </motion.div>
         </div>
       </motion.section>
