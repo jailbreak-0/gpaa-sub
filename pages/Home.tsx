@@ -15,14 +15,14 @@ const HERO_SLIDES = [
   {
     title: "Empowering Physician Assistants, Advancing Healthcare for Ghana",
     description: "The official professional association for Physician Assistants in Ghana. Dedicated to advancing clinical excellence, professional development, and quality healthcare delivery nationwide since 1980.",
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCsEjnzETfysxph7bsFcZWTxIvnlheAo9-96REquKX0D_dxrjo_kW39qBOr8w0aJp6weqWuo9bAs76UK0prb0wwWd6UfFeUgUfQEWx5_960vJ8fOEG_iGAEBfmE1wY_bgo6--geeqNoTUP6b5x1BmohnvS8ROfrl_hX4Z2JU40hXzi1W3dwfDadORY6YNYmtjP99L6A1M7NWyRDjmTL6VJuEuKlEErAiouc51Yr8teJERtC8alZeAiQGdjG9HIVgxNKQvcMsDNrYG8u",
+    image: '/images/22nd-conference/PSX_20251025_112435.jpg',
     primaryCTA: { text: "Become a Member", link: "/membership/join" },
     secondaryCTA: { text: "Member Login", link: "/membership#login" }
   },
   {
     title: "Why Are PAs Important?",
     description: "Serving as the backbone of Ghana's primary healthcare system, Physician Assistants deliver essential medical services in underserved areas, reduce patient wait times, and extend healthcare access to every corner of our nation. We are passionate advocates for community health and wellness.",
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCxhksdUPXXVk-NzwdM9rCSRElp9hD5tuwxIbb2oaSottS_n8CBn2KFYoOxhNMKmdPA0nLGXweg_lxOxW3fqn9VUylg2bOR3MqHBgAIo9-0qKpXDe-McBLKmUoGTxDDWVUHHeAtKw1tAqKoY3dUQbFIlfK4vqGO6v2qmdpaxZLC_fogOHpFItnF0fmN8aqKpffAS6KTUGwcGek6yN776X8glBgbU6LSuM02Qc3DL5N6qDlixxyHBsj4cK8_OWxUBhbufhrr7IwbACW7",
+    image: '/images/21st-conference/21st Annual Confrence GPAA-138.jpg',
     primaryCTA: { text: "View Upcoming Events", link: "/events" },
     secondaryCTA: { text: "Contact Us", link: "/contact" }
   }
@@ -109,12 +109,11 @@ const Home: React.FC = () => {
     <div>
       {/* Hero Section Carousel */}
       <section className="relative bg-white">
-        <div className="max-w-350 mx-auto p-2 md:p-4 lg:p-10">
-          <div 
-            className="relative overflow-hidden rounded-2xl md:rounded-3xl bg-linear-to-br from-slate-900 via-primary-dark to-primary min-h-120 md:min-h-140 lg:min-h-150 shadow-2xl"
-            onMouseEnter={() => setIsHovering(true)}
-            onMouseLeave={() => setIsHovering(false)}
-          >
+        <div 
+          className="relative overflow-hidden bg-linear-to-br from-slate-900 via-primary-dark to-primary min-h-[calc(100vh-80px)]"
+          onMouseEnter={() => setIsHovering(true)}
+          onMouseLeave={() => setIsHovering(false)}
+        >
             <AnimatePresence initial={false} custom={direction}>
               <motion.div
                 key={currentSlide}
@@ -219,7 +218,6 @@ const Home: React.FC = () => {
                 />
               ))}
             </div>
-          </div>
         </div>
       </section>
 

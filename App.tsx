@@ -17,6 +17,8 @@ const Membership = lazy(() => import('./pages/Membership'));
 const MembershipJoin = lazy(() => import('./pages/MembershipJoin'));
 const Events = lazy(() => import('./pages/Events'));
 const ConferenceArchive = lazy(() => import('./pages/ConferenceArchive'));
+const Conference21st = lazy(() => import('./pages/Conference21st'));
+const Conference22nd = lazy(() => import('./pages/Conference22nd'));
 const Advocacy = lazy(() => import('./pages/Advocacy'));
 const News = lazy(() => import('./pages/News'));
 const NewsResources = lazy(() => import('./pages/NewsResources'));
@@ -50,6 +52,8 @@ const App: React.FC = () => {
               <Route path="/programs" element={<Programs />} />
               <Route path="/events" element={<Events />} />
               <Route path="/events/conference-archive" element={<ConferenceArchive />} />
+              <Route path="/events/conference-archive/21st" element={<Conference21st />} />
+              <Route path="/events/conference-archive/22nd" element={<Conference22nd />} />
               <Route path="/advocacy" element={<Advocacy />} />
               <Route path="/get-involved" element={<GetInvolved />} />
               <Route path="/get-involved/volunteer" element={<Volunteer />} />

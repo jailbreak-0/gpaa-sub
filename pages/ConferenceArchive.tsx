@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 const ConferenceArchive: React.FC = () => {
@@ -8,18 +9,18 @@ const ConferenceArchive: React.FC = () => {
   };
 
   const conferences = [
-    { year: '2025', theme: 'Digital Health Transformation', location: 'Accra International Conference Centre', attendance: '1200+' },
-    { year: '2024', theme: 'Universal Health Coverage Now', location: 'Kumasi Convention Centre', attendance: '1100+' },
-    { year: '2023', theme: 'PAs Leading Primary Care', location: 'Labadi Beach Hotel, Accra', attendance: '950+' },
-    { year: '2022', theme: 'Post-Pandemic Healthcare', location: 'Golden Tulip Hotel, Kumasi', attendance: '800+' },
-    { year: '2021', theme: 'Resilience in Crisis', location: 'Virtual Conference', attendance: '1500+' },
-    { year: '2020', theme: 'Innovation & Technology', location: 'Movenpick Ambassador Hotel, Accra', attendance: '900+' },
-    { year: '2019', theme: 'Quality Healthcare for All', location: 'Alisa Hotel, Accra', attendance: '850+' },
-    { year: '2018', theme: 'Professional Excellence', location: 'Miklin Hotel, Kumasi', attendance: '750+' },
-    { year: '2017', theme: 'Community Health Impact', location: 'Coconut Grove Hotel, Accra', attendance: '720+' },
-    { year: '2016', theme: '50 Years of Service', location: 'Tang Palace Hotel, Accra', attendance: '1000+' },
-    { year: '2015', theme: 'Advancing Clinical Practice', location: 'Best Western Plus, Accra', attendance: '680+' },
-    { year: '2014', theme: 'Healthcare Delivery Excellence', location: 'Erata Hotel, Accra', attendance: '650+' },
+    { rank: '22nd', year: '2025', theme: 'Digital Health Transformation', location: 'Accra International Conference Centre', attendance: '1200+', link: '/events/conference-archive/22nd' },
+    { rank: '21st', year: '2024', theme: 'Universal Health Coverage Now', location: 'Kumasi Convention Centre', attendance: '1100+', link: '/events/conference-archive/21st' },
+    { rank: '20th', year: '2023', theme: 'PAs Leading Primary Care', location: 'Labadi Beach Hotel, Accra', attendance: '950+' },
+    { rank: '19th', year: '2022', theme: 'Post-Pandemic Healthcare', location: 'Golden Tulip Hotel, Kumasi', attendance: '800+' },
+    { rank: '18th', year: '2021', theme: 'Resilience in Crisis', location: 'Virtual Conference', attendance: '1500+' },
+    { rank: '17th', year: '2020', theme: 'Innovation & Technology', location: 'Movenpick Ambassador Hotel, Accra', attendance: '900+' },
+    { rank: '16th', year: '2019', theme: 'Quality Healthcare for All', location: 'Alisa Hotel, Accra', attendance: '850+' },
+    { rank: '15th', year: '2018', theme: 'Professional Excellence', location: 'Miklin Hotel, Kumasi', attendance: '750+' },
+    { rank: '14th', year: '2017', theme: 'Community Health Impact', location: 'Coconut Grove Hotel, Accra', attendance: '720+' },
+    { rank: '13th', year: '2016', theme: '50 Years of Service', location: 'Tang Palace Hotel, Accra', attendance: '1000+' },
+    { rank: '12th', year: '2015', theme: 'Advancing Clinical Practice', location: 'Best Western Plus, Accra', attendance: '680+' },
+    { rank: '11th', year: '2014', theme: 'Healthcare Delivery Excellence', location: 'Erata Hotel, Accra', attendance: '650+' },
   ];
 
   return (
@@ -93,6 +94,9 @@ const ConferenceArchive: React.FC = () => {
                 <div className="text-6xl font-black text-primary mb-4 group-hover:scale-110 transition-transform">
                   {conf.year}
                 </div>
+                <p className="text-xs font-black uppercase tracking-widest text-primary/80 mb-3">
+                  {conf.rank} Annual Conference
+                </p>
                 <h3 className="text-2xl font-black text-[#111418] mb-4 leading-tight">
                   {conf.theme}
                 </h3>
@@ -107,10 +111,17 @@ const ConferenceArchive: React.FC = () => {
                   </div>
                 </div>
                 <div className="mt-6 pt-6 border-t border-[#e5e7eb]">
-                  <button className="text-primary cursor-pointer font-bold text-sm hover:text-primary-dark transition-colors flex items-center gap-2 group-hover:gap-3">
-                    View Conference Details
-                    <span className="material-symbols-outlined text-lg transition-all">arrow_forward</span>
-                  </button>
+                  {conf.link ? (
+                    <Link to={conf.link} className="text-primary cursor-pointer font-bold text-sm hover:text-primary-dark transition-colors flex items-center gap-2 group-hover:gap-3">
+                      View Conference Photos
+                      <span className="material-symbols-outlined text-lg transition-all">arrow_forward</span>
+                    </Link>
+                  ) : (
+                    <span className="text-[#617289] font-bold text-sm flex items-center gap-2">
+                      Archive record only
+                      <span className="material-symbols-outlined text-lg">inventory_2</span>
+                    </span>
+                  )}
                 </div>
               </motion.div>
             ))}
