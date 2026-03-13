@@ -118,7 +118,7 @@ const MembershipJoin: React.FC = () => {
               >
                 <option value="">Choose a category</option>
                 {MEMBERSHIP_CATEGORIES.map((cat, idx) => (
-                  <option key={idx} value={cat.title}>{cat.title} - {cat.fees}</option>
+                  <option key={idx} value={cat.title}>{cat.title}</option>
                 ))}
               </select>
             </div>
