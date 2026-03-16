@@ -88,7 +88,7 @@ const SignUp: React.FC = () => {
                   value={formData.firstName}
                   onChange={handleChange}
                   className="w-full px-4 py-3 rounded-xl border-2 border-[#e5e7eb] focus:border-primary outline-none transition-all"
-                  placeholder="Enter first name"
+                  placeholder="Enter First Name"
                 />
               </div>
               <div>
