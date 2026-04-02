@@ -7,7 +7,7 @@ import { PILLARS, NEWS, PARTNERS, TRUST_SIGNALS } from '../constants';
 const HERO_SLIDES = [
   {
     title: "Who Are Physician Assistants?",
-    description: "Trained healthcare professionals providing comprehensive primary healthcare services across Ghana. We diagnose, treat, and prevent diseases in hospitals, clinics, and community health centers—bridging the gap between doctors and nurses to deliver quality care to all Ghanaians.",
+    description: "Trained healthcare professionals providing comprehensive primary healthcare services across Ghana. We diagnose, treat, and prevent diseases in hospitals, clinics, and community health centers; Bridging the gap between doctors and nurses to deliver quality care to all Ghanaians.",
     image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBVuTLDhlHybXyBhB5LhYTWIhMrqrELWIPLFC9xjF4kcDu3ewQRaPETCsuy2iEygh9zC41olCEwbQVutbr24ODBX0IGWssYpPe0HOLIkWE9w3SN7HTSNM9qz2wFlrHXfPykDc3mAoNAphXEwvf1_Bp-U2oxLcb134UZv7WyWGeQdcjvbpSlU00IJN126CIbBnaUPfrzk9yfQcjgBeAyxt12OPVidh0iD7mdPyJgRpEfk6Sts28-3QVrfdKlph07dd8RJkAyeJSRZon9",
     primaryCTA: { text: "Join GPAA Today", link: "/membership/join" },
     secondaryCTA: { text: "Learn More About PAs", link: "/about" }
