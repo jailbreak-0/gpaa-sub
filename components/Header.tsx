@@ -7,6 +7,10 @@ const Header: React.FC = () => {
   const location = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const [openAccordion, setOpenAccordion] = useState<string | null>(() => {
+    const firstWithSub = NAV_LINKS.find((l) => l.submenu);
+    return firstWithSub ? firstWithSub.label : null;
+  });
 
   // Handle scrolling to hash anchors
   useEffect(() => {
@@ -24,22 +28,22 @@ const Header: React.FC = () => {
   }, [location]);
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md border-b border-[#f0f2f4] px-3 md:px-6 lg:px-10 xl:px-20 py-2 md:py-3 shadow-sm">
-      <div className="max-w-350 mx-auto flex items-center justify-between">
+    <header className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md border-b border-[#f0f2f4] px-2 sm:px-3 md:px-6 lg:px-10 xl:px-20 py-1.5 sm:py-2 md:py-3 shadow-sm">
+      <div className="max-w-full sm:max-w-350 mx-auto flex items-center justify-between">
         <div className="flex items-center">
-          <Link to="/" className="flex items-center gap-2 md:gap-3 group">
-            <div className="h-10 md:h-12 transition-transform">
+          <Link to="/" className="flex items-center gap-1 sm:gap-2 md:gap-3 group">
+            <div className="h-8 sm:h-10 md:h-12 transition-transform">
               <img src="/images/gpaa_logo.png" alt="GPAA Logo" className="h-full w-auto object-contain" />
             </div>
-            <div className="hidden sm:block">
-              <h3 className="text-[#111418] text-base md:text-lg lg:text-xl font-black leading-tight tracking-tight">GPAA</h3>
-              <p className="text-[10px] md:text-[12px] text-[#617289] font-bold -mt-0.5">Ghana Physician Assistants Association</p>
+            <div className="hidden xs:block">
+              <h3 className="text-[#111418] text-xs sm:text-base md:text-lg lg:text-xl font-black leading-tight tracking-tight">GPAA</h3>
+              <p className="text-[8px] sm:text-[10px] md:text-[12px] text-[#617289] font-bold -mt-0.5">Ghana Physician Assistants Association</p>
             </div>
           </Link>
         </div>
 
         {/* Auth Buttons */}
-        <div className="flex items-center gap-2 md:gap-3 lg:gap-6">
+        <div className="flex items-center gap-1 sm:gap-2 md:gap-3 lg:gap-6">
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-4 xl:gap-6 animate-in fade-in slide-in-from-left duration-300">
             {NAV_LINKS.map((link) => (
@@ -105,22 +109,46 @@ const Header: React.FC = () => {
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="lg:hidden fixed inset-x-0 top-18 bg-white border-b shadow-xl p-4 max-h-[calc(100vh-72px)] overflow-y-auto animate-in slide-in-from-top duration-300">
+        <div className="lg:hidden fixed inset-x-0 top-16 sm:top-18 bg-white border-b shadow-xl p-2 sm:p-4 max-h-[calc(100vh-56px)] sm:max-h-[calc(100vh-72px)] overflow-y-auto animate-in slide-in-from-top duration-300">
           {NAV_LINKS.map((link) => (
-            <div key={link.label}>
-              <Link
-                to={link.href}
-                onClick={() => !link.submenu && setMobileMenuOpen(false)}
-                className={`block text-base font-bold p-3 rounded-lg mb-2 ${
-                  location.pathname === link.href || location.pathname.startsWith(link.href + '/')
-                    ? 'bg-primary/10 text-primary'
-                    : 'text-[#111418] hover:bg-background-light'
-                }`}
-              >
-                {link.label}
-              </Link>
-              {link.submenu && (
-                <div className="ml-4 mb-2 space-y-1">
+            <div key={link.label} className="mb-2">
+
+              <div className="flex items-center justify-between">
+                {link.submenu ? (
+                  <button
+                    type="button"
+                    aria-expanded={openAccordion === link.label}
+                    aria-controls={`submenu-${link.label}`}
+                    onClick={() => setOpenAccordion(openAccordion === link.label ? null : link.label)}
+                    className={`flex-1 text-left text-base font-bold p-3 rounded-lg mr-2 ${
+                      location.pathname === link.href || location.pathname.startsWith(link.href + '/')
+                        ? 'bg-primary/10 text-primary'
+                        : 'text-[#111418] hover:bg-background-light'
+                    }`}
+                  >
+                    {link.label}
+                    <span className="material-symbols-outlined text-xl align-middle ml-2">
+                      {openAccordion === link.label ? 'expand_less' : 'expand_more'}
+                    </span>
+                  </button>
+                ) : (
+                  <Link
+                    to={link.href}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className={`flex-1 text-base font-bold p-3 rounded-lg mr-2 ${
+                      location.pathname === link.href || location.pathname.startsWith(link.href + '/')
+                        ? 'bg-primary/10 text-primary'
+                        : 'text-[#111418] hover:bg-background-light'
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                )}
+              </div>
+
+              {/* Accordion content: only one open at a time (auto-closes) */}
+              {link.submenu && openAccordion === link.label && (
+                <div id={`submenu-${link.label}`} className="ml-4 mt-2 space-y-1">
                   {link.submenu.map((sublink) => (
                     <Link
                       key={sublink.label}

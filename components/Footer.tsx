@@ -4,21 +4,21 @@ import { Link } from 'react-router-dom';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-[#111418] text-white py-16 px-4">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16 border-b border-white/10 pb-16">
+    <footer className="bg-[#111418] text-white py-8 sm:py-12 md:py-16 px-2 sm:px-4">
+      <div className="max-w-full sm:max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-10 md:gap-12 mb-10 sm:mb-16 border-b border-white/10 pb-10 sm:pb-16">
           <div className="flex flex-col gap-6">
-            <Link to="/" className="flex items-center gap-3 text-white">
-              <div className="h-10">
+            <Link to="/" className="flex items-center gap-2 sm:gap-3 text-white">
+              <div className="h-8 sm:h-10">
                 <img src="/images/gpaa_logo.png" alt="GPAA Logo" className="h-full w-auto object-contain" />
               </div>
-              <h2 className="text-xl font-black">GPAA</h2>
+              <h2 className="text-base sm:text-xl font-black">GPAA</h2>
             </Link>
-            <p className="text-primary font-bold text-lg mb-4">Together We Build</p>
-            <p className="text-gray-400 leading-relaxed">
+            <p className="text-primary font-bold text-sm sm:text-lg mb-2 sm:mb-4">Together We Build</p>
+            <p className="text-gray-400 leading-relaxed text-xs sm:text-base">
               Official professional body for Physician Assistants in Ghana. Advancing clinical excellence and advocating for quality healthcare delivery since 1980.
             </p>
-            <div className="flex gap-4">
+            <div className="flex gap-2 sm:gap-4">
               <a href="https://www.facebook.com/GhanaPhysicianAssistantsAssociation" target="_blank" rel="noopener noreferrer" className="size-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary transition-all hover:-translate-y-1">
                 <svg className="size-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path fillRule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clipRule="evenodd" />
@@ -33,9 +33,9 @@ const Footer: React.FC = () => {
           </div>
 
           <div>
-            <h4 className="font-bold text-lg mb-6">Quick Links</h4>
-            <ul className="space-y-4">
-              <li><Link to="/about" className="text-gray-400 hover:text-white transition-colors">Our History</Link></li>
+            <h4 className="font-bold text-base sm:text-lg mb-3 sm:mb-6">Quick Links</h4>
+            <ul className="space-y-2 sm:space-y-4">
+              <li><Link to="/about#history" className="text-gray-400 hover:text-white transition-colors">Our History</Link></li>
               <li><Link to="/programs" className="text-gray-400 hover:text-white transition-colors">Strategic Pillars</Link></li>
               <li><Link to="/membership" className="text-gray-400 hover:text-white transition-colors">Membership</Link></li>
               <li><Link to="/advocacy" className="text-gray-400 hover:text-white transition-colors">Advocacy Center</Link></li>
@@ -44,28 +44,29 @@ const Footer: React.FC = () => {
           </div>
 
           <div>
-            <h4 className="font-bold text-lg mb-6">Resources</h4>
-            <ul className="space-y-4">
+            <h4 className="font-bold text-base sm:text-lg mb-3 sm:mb-6">Resources</h4>
+            <ul className="space-y-2 sm:space-y-4">
               <li><Link to="/news-resources" className="text-gray-400 hover:text-white transition-colors">News & Resources</Link></li>
               <li><Link to="/events" className="text-gray-400 hover:text-white transition-colors">Events</Link></li>
+              <li><Link to="/forms-policies" className="text-gray-400 hover:text-white transition-colors">Forms & Policies</Link></li>
             </ul>
           </div>
 
           <div>
-            <h4 className="font-bold text-lg mb-6">Contact Us</h4>
-            <ul className="space-y-4">
-              <li className="flex items-start gap-3">
+            <h4 className="font-bold text-base sm:text-lg mb-3 sm:mb-6">Contact Us</h4>
+            <ul className="space-y-2 sm:space-y-4">
+              <li className="flex items-start gap-2 sm:gap-3">
                 <span className="material-symbols-outlined text-primary">location_on</span>
                 <span className="text-gray-400">Headquarters Office, <br /> Ashiyie, Off Adenta-Dodowa Road, Accra North - Ghana</span>
               </li>
-              <li className="flex items-start gap-3">
+              <li className="flex items-start gap-2 sm:gap-3">
                 <span className="material-symbols-outlined text-primary">phone</span>
                 <span className="text-gray-400">
                   <a href="tel:+233302123456"><p className="hover:text-primary">+233 (0) 30 212 3456</p></a>
                   <a href="tel:+233540682071"><p className="hover:text-primary">+233 (0) 54 068 2071</p></a>
                 </span>
               </li>
-              <li className="flex items-start gap-3">
+              <li className="flex items-start gap-2 sm:gap-3">
                 <span className="material-symbols-outlined text-primary">mail</span>
                 <span className="text-gray-400 hover:text-primary"><a href="mailto:gpaanational@gmail.com">gpaanational@gmail.com</a></span>
               </li>
@@ -73,11 +74,11 @@ const Footer: React.FC = () => {
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row justify-between items-center gap-6 text-sm text-gray-500">
-          <p>© {new Date().getFullYear()} Ghana Physician Assistants Association. All rights reserved.</p>
-          <div className="flex gap-8">
-            <a href="#" className="hover:text-white">Privacy Policy</a>
-            <a href="#" className="hover:text-white">Terms of Service</a>
+        <div className="flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-6 text-xs sm:text-sm text-gray-500">
+          <p> {new Date().getFullYear()} Ghana Physician Assistants Association. All rights reserved.</p>
+          <div className="flex gap-4 sm:gap-8">
+            <Link to="/forms-policies" className="hover:text-white">Privacy Policy</Link>
+            <Link to="/forms-policies" className="hover:text-white">Terms of Service</Link>
           </div>
         </div>
       </div>

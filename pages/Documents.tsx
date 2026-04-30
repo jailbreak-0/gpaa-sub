@@ -7,10 +7,10 @@ const Documents: React.FC = () => {
   const fadeInUp = { hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0 } };
   const stagger = { visible: { transition: { staggerChildren: 0.1 } } };
 
-  const categories = ['All', 'Financial', 'Reports', 'Calendar', 'Policies', 'Forms'];
+  const categories = ['All', 'Financial', 'Reports', 'Calendar'];
 
   const filteredDocs = selectedCategory === 'All' 
-    ? SAMPLE_DOCUMENTS 
+    ? SAMPLE_DOCUMENTS.filter(doc => doc.category !== 'Forms' && doc.category !== 'Policies')
     : SAMPLE_DOCUMENTS.filter(doc => doc.category === selectedCategory);
 
   const getCategoryIcon = (category: string) => {
@@ -18,8 +18,6 @@ const Documents: React.FC = () => {
       case 'Financial': return 'account_balance';
       case 'Reports': return 'description';
       case 'Calendar': return 'event';
-      case 'Policies': return 'gavel';
-      case 'Forms': return 'article';
       default: return 'folder';
     }
   };
@@ -29,8 +27,6 @@ const Documents: React.FC = () => {
       case 'Financial': return 'text-ghana-green bg-ghana-green/10';
       case 'Reports': return 'text-primary bg-primary/10';
       case 'Calendar': return 'text-ghana-gold bg-ghana-gold/10';
-      case 'Policies': return 'text-green-dark bg-green-dark/10';
-      case 'Forms': return 'text-accent bg-accent/10';
       default: return 'text-[#617289] bg-[#617289]/10';
     }
   };

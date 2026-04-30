@@ -1,9 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { EVENTS } from '../constants';
 
 const Events: React.FC = () => {
   const [filter, setFilter] = useState<'all' | 'upcoming' | 'past'>('all');
+  const [showTabs, setShowTabs] = useState(true);
+  const lastScrollY = useRef(0);
+  const ticking = useRef(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!ticking.current) {
+        window.requestAnimationFrame(() => {
+          const currentY = window.scrollY;
+          if (currentY > lastScrollY.current && currentY > 120) {
+            setShowTabs(false); // scrolling down
+          } else {
+            setShowTabs(true); // scrolling up
+          }
+          lastScrollY.current = currentY;
+          ticking.current = false;
+        });
+        ticking.current = true;
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const filteredEvents = filter === 'all' 
     ? EVENTS 
@@ -15,22 +38,22 @@ const Events: React.FC = () => {
       <motion.section
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className="relative bg-linear-to-br from-primary via-primary-dark to-[#0a4296] py-24"
+        className="relative bg-linear-to-br from-primary via-primary-dark to-[#0a4296] py-12 sm:py-16 md:py-24"
       >
         <div className="absolute inset-0 opacity-5" style={{
           backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)',
-          backgroundSize: '30px 30px'
+          backgroundSize: '20px 20px'
         }}></div>
-        <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
+        <div className="relative z-10 max-w-full sm:max-w-7xl mx-auto px-2 sm:px-4 md:px-6 text-center">
           <motion.div
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.2 }}
           >
-            <h1 className="text-5xl md:text-7xl font-black text-white mb-8">
+            <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black text-white mb-4 sm:mb-8">
               Events & Conferences
             </h1>
-            <p className="text-white/90 text-xl md:text-2xl max-w-3xl mx-auto leading-relaxed">
+            <p className="text-white/90 text-xs xs:text-sm sm:text-lg md:text-2xl max-w-full sm:max-w-3xl mx-auto leading-relaxed">
               Join us at our professional development events, annual conferences, and community health outreaches across Ghana
             </p>
           </motion.div>
@@ -38,7 +61,10 @@ const Events: React.FC = () => {
       </motion.section>
 
       {/* Filter Tabs */}
-      <section className="sticky top-16 bg-white/95 backdrop-blur-md border-b border-[#e5e7eb] z-40 px-6 py-4">
+      <section
+        id="filter-tabs"
+        className={`sticky top-16 bg-white/95 backdrop-blur-md border-b border-[#e5e7eb] z-40 px-6 py-4 transition-transform duration-300 ${showTabs ? '' : '-translate-y-full opacity-0 pointer-events-none'}`}
+      >
         <div className="max-w-7xl mx-auto flex justify-center gap-4">
           {[
             { value: 'all', label: 'All Events' },
@@ -143,13 +169,13 @@ const Events: React.FC = () => {
           <p className="text-white/90 text-xl mb-8">
             Subscribe to our newsletter to receive event updates and early registration access
           </p>
-          <div className="flex gap-3 max-w-lg mx-auto">
+          <div className="flex flex-col xs:flex-row gap-3 max-w-lg mx-auto">
             <input
               type="email"
               placeholder="Enter your email"
-              className="flex-1 px-6 py-4 rounded-xl text-[#111418] outline-none bg-white placeholder:text-[#617289] transition-all focus:ring-2 focus:ring-primary focus:ring-offset-1"
+              className="flex-1 px-4 sm:px-6 py-3 sm:py-4 rounded-xl text-[#111418] outline-none bg-white placeholder:text-[#617289] transition-all focus:ring-2 focus:ring-primary focus:ring-offset-1"
             />
-            <button className="bg-white cursor-pointer text-primary px-4 py-4 rounded-xl font-black hover:bg-primary hover:border-2 hover:text-white transition-all">
+            <button className="bg-white cursor-pointer text-primary px-4 py-3 sm:px-4 sm:py-4 rounded-xl font-black hover:bg-primary hover:border-2 hover:text-white transition-all w-full xs:w-auto">
               Subscribe
             </button>
           </div>

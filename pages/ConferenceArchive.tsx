@@ -9,16 +9,16 @@ const ConferenceArchive: React.FC = () => {
   };
 
   const conferences = [
-    { rank: '22nd', year: '2025', theme: 'Digital Health Transformation', location: 'Accra International Conference Centre', attendance: '1200+', link: '/events/conference-archive/22nd' },
-    { rank: '21st', year: '2024', theme: 'Universal Health Coverage Now', location: 'Kumasi Convention Centre', attendance: '1100+', link: '/events/conference-archive/21st' },
-    { rank: '20th', year: '2023', theme: 'PAs Leading Primary Care', location: 'Labadi Beach Hotel, Accra', attendance: '950+' },
-    { rank: '19th', year: '2022', theme: 'Post-Pandemic Healthcare', location: 'Golden Tulip Hotel, Kumasi', attendance: '800+' },
-    { rank: '18th', year: '2021', theme: 'Resilience in Crisis', location: 'Virtual Conference', attendance: '1500+' },
+    { rank: '22nd', year: '2025', theme: 'Repositioning Physician Assistants for Leadership In Primary Healthcare', location: 'Pentecost Convention Centre, Accra', attendance: '1200+', link: '/events/conference-archive/22nd' },
+    { rank: '21st', year: '2024', theme: 'Leveraging On The Network Of Practice To Accelerate The Attainment Of Universal Health Coverage', location: 'Ho Technical University', attendance: '1100+', link: '/events/conference-archive/21st' },
+    { rank: '20th', year: '2023', theme: 'Strengthening And Maximizing The Sub-District Level', location: 'Business School Auditorium B, KNUST', attendance: '950+' },
+    { rank: '19th', year: '2022', theme: 'Strengthening And Maximizing The Sub-District Level For Effective, Efficient And Equitable Healthcare Service Delivery', location: 'Golden Tulip Hotel, Kumasi', attendance: '800+' },
+    { rank: '18th', year: '2021', theme: 'Career Progression And Protection For The Physician Assistant', location: 'Pempamsie Hotel, Cape Coast', attendance: '1500+' },
     { rank: '17th', year: '2020', theme: 'Innovation & Technology', location: 'Movenpick Ambassador Hotel, Accra', attendance: '900+' },
-    { rank: '16th', year: '2019', theme: 'Quality Healthcare for All', location: 'Alisa Hotel, Accra', attendance: '850+' },
+    { rank: '16th', year: '2019', theme: 'Solidifying The Gains And Improving Material And Child Health Service Outcome', location: 'Akroma Plaza, Takoradi', attendance: '850+' },
     { rank: '15th', year: '2018', theme: 'Professional Excellence', location: 'Miklin Hotel, Kumasi', attendance: '750+' },
     { rank: '14th', year: '2017', theme: 'Community Health Impact', location: 'Coconut Grove Hotel, Accra', attendance: '720+' },
-    { rank: '13th', year: '2016', theme: '50 Years of Service', location: 'Tang Palace Hotel, Accra', attendance: '1000+' },
+    { rank: '13th', year: '2016', theme: 'Sustainability Of The Gate Keeper System In Healthcare Delivery', location: 'Wa, Upper West', attendance: '1000+' },
     { rank: '12th', year: '2015', theme: 'Advancing Clinical Practice', location: 'Best Western Plus, Accra', attendance: '680+' },
     { rank: '11th', year: '2014', theme: 'Healthcare Delivery Excellence', location: 'Erata Hotel, Accra', attendance: '650+' },
   ];

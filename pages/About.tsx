@@ -390,7 +390,7 @@ const About: React.FC = () => {
               Our regional leaders ensuring representation and support across all 16 regions of Ghana.
             </p>
           </motion.div>
-          <motion.div variants={stagger} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <motion.div id="regional" variants={stagger} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {GHANA_REGIONS.map((region) => {
               const regionExecs = REGIONAL_EXECUTIVES.filter(exec => exec.region === region);
               const chairman = regionExecs.find(exec => exec.role === 'Chairman');
