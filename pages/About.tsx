@@ -395,7 +395,7 @@ const About: React.FC = () => {
               const regionExecs = REGIONAL_EXECUTIVES.filter(exec => exec.region === region);
               const chairman = regionExecs.find(exec => exec.role === 'Chairman');
               const secretary = regionExecs.find(exec => exec.role === 'Secretary');
-              
+              if (!chairman && !secretary) return null;
               return (
                 <motion.div 
                   key={region} 
@@ -411,9 +411,9 @@ const About: React.FC = () => {
                       <div>
                         <div className="text-xs font-bold text-primary uppercase tracking-wide mb-1">Chairman</div>
                         <div className="font-bold text-[#111418]">{chairman.name}</div>
-                        {chairman.email && (
-                          <a href={`mailto:${chairman.email}`} className="text-sm text-[#617289] hover:text-primary transition-colors">
-                            {chairman.email}
+                        {chairman.phone && (
+                          <a href={`tel:${chairman.phone}`} className="text-sm text-[#617289] hover:text-primary transition-colors">
+                            {chairman.phone}
                           </a>
                         )}
                       </div>
@@ -422,9 +422,9 @@ const About: React.FC = () => {
                       <div>
                         <div className="text-xs font-bold text-ghana-green uppercase tracking-wide mb-1">Secretary</div>
                         <div className="font-bold text-[#111418]">{secretary.name}</div>
-                        {secretary.email && (
-                          <a href={`mailto:${secretary.email}`} className="text-sm text-[#617289] hover:text-ghana-green transition-colors">
-                            {secretary.email}
+                        {secretary.phone && (
+                          <a href={`tel:${secretary.phone}`} className="text-sm text-[#617289] hover:text-ghana-green transition-colors">
+                            {secretary.phone}
                           </a>
                         )}
                       </div>
